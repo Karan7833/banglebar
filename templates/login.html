@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="{{ url_for('static', filename='banglescript.js') }}"></script>
-
-   <style>
+    <style>
         /* General Reset */
         * {
             box-sizing: border-box;
@@ -180,48 +180,41 @@
             .bangles-bg { width: 80px; bottom: -15px; right: -15px; }
         }
     </style>
-
 </head>
 
 <body>
     <div class="login-container">
-        <!-- Subtle Bangles Illustration as background -->
         <img class="bangles-bg"
             src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/d3213285-bd5e-47e9-a316-57ea8679ab8a.png"
             alt="Bangles Illustration">
         <h2>WELCOME BACK</h2>
         <p>Welcome back! Please enter your details.</p>
+
         <form id="loginform">
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email"  name="email" id="email" placeholder="Enter your email" required>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password"   id="password"    name="password" placeholder="********">
-                
-                <i id="eyebtn" class="fa-solid fa-eye-slash"  onclick="togglePassword()"></i> 
+                <input type="password" name="password" id="password" placeholder="********">
+                <i id="eyebtn" class="fa-solid fa-eye-slash" onclick="togglePassword()"></i>
             </div>
             <div class="form-util">
                 <label><input type="checkbox"> Remember me</label>
                 <a href="{{ url_for('Forgot_pass') }}">Forgot password</a>
             </div>
-            <button class="sign-in-btn" onclick="checklogin()"          type="submit">Sign in</button>
-            <button class="google-btn" type="button">
 
-                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" width="20"
-                    height="20">
+            <button class="sign-in-btn" type="submit" onclick="checklogin()">Sign in</button>
+            <button class="google-btn" type="button">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
                 Sign in with Google
             </button>
+        </form>
 
-         <form >
         <div class="signup-link">
             Don't have an account? <a href="{{ url_for('signup') }}">Sign up for free</a>
-
         </div>
     </div>
 </body>
-
-
 </html>
-
