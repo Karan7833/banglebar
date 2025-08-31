@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template,session , flash , redirect , url_for
-from authlib.integrations.flask_client import OAuth
+# from authlib.integrations.flask_client import OAuth
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
@@ -53,36 +53,36 @@ def is_valid_email(email):
 def home():
     return render_template('index.html' , products=products)
 
-@app.route('/add_to_cart', methods=['POST'])
-def add_to_cart():
-    product_id = int(request.json['id'])
+# @app.route('/add_to_cart', methods=['POST'])
+# def add_to_cart():
+#     product_id = int(request.json['id'])
 
-    # product find karo
-    product = next((p for p in products if p['id'] == product_id), None)
-    if not product:
-        return jsonify({"success": False, "message": "Product not found"}), 404
+#     # product find karo
+#     product = next((p for p in products if p['id'] == product_id), None)
+#     if not product:
+#         return jsonify({"success": False, "message": "Product not found"}), 404
 
-    # cart session me rakho
-    if "cart" not in session:
-        session["cart"] = []
+#     # cart session me rakho
+#     if "cart" not in session:
+#         session["cart"] = []
 
-    cart = session["cart"]
+#     cart = session["cart"]
 
-    # check if already exists
-    for item in cart:
-        if item["id"] == product_id:
-            item["quantity"] += 1
-            break
-    else:
-        cart.append({"id": product["id"], "name": product["name"], "price": product["price"], "quantity": 1})
+#     # check if already exists
+#     for item in cart:
+#         if item["id"] == product_id:
+#             item["quantity"] += 1
+#             break
+#     else:
+#         cart.append({"id": product["id"], "name": product["name"], "price": product["price"], "quantity": 1})
 
-    session["cart"] = cart
-    return jsonify({"success": True, "cart": cart})
+#     session["cart"] = cart
+#     return jsonify({"success": True, "cart": cart})
 
-@app.route('/cart')
-def view_cart():
-    cart = session.get("cart", [])
-    return jsonify(cart)
+# @app.route('/cart')
+# def view_cart():
+#     cart = session.get("cart", [])
+#     return jsonify(cart)
 
 
 
@@ -200,14 +200,6 @@ def logout():
 @app.route('/')
 def render():
     return render_template("product_showcase.html", products=products)
-
-
-
-
-
-
-
-    
 # -------------------
 # Initialize DB
 # -------------------
@@ -216,3 +208,4 @@ with app.app_context():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
