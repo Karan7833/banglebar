@@ -1,2 +1,3 @@
-web: gunicorn elegantbangles.elegantback:app
+web: gunicorn elegantback:app
+
 
