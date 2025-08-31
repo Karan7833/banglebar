@@ -5,7 +5,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import re
 from flask_cors import CORS
 from datetime import datetime
-import sqlite3
+import sqlite3 
+import os
 
 app = Flask(__name__)
 CORS(app) 
@@ -214,5 +215,9 @@ def render():
 with app.app_context():
     db.create_all()
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
