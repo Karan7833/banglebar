@@ -1,6 +1,0 @@
-gunicorn elegantback:app
-
-
-
-
-
