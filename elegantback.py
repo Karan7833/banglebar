@@ -51,8 +51,7 @@ def is_valid_email(email):
 # -------------------
 @app.route('/')
 def home():
-    return "heelo"
-    # return render_template('index.html' , products=products)
+    return render_template('index.html' , products=products)
 
 # @app.route('/add_to_cart', methods=['POST'])
 # def add_to_cart():
@@ -209,5 +208,6 @@ with app.app_context():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
