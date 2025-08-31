@@ -6,6 +6,57 @@
      background: #f7f7fb;
  }
 
+/* mobile-fix.css */
+* {
+  box-sizing: border-box;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+.container, .section, .card {
+  width: 100% !important;
+  padding: 10px !important;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1 1 100% !important; /* Mobile me full width */
+  margin-bottom: 10px !important;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  nav, header, footer {
+    text-align: center !important;
+  }
+
+  nav ul {
+    flex-direction: column !important;
+    padding: 0 !important;
+  }
+
+  nav ul li {
+    margin: 5px 0 !important;
+  }
+
+  button, a {
+    width: 100% !important;
+    padding: 12px !important;
+  }
+}
+
+
  .header {
      display: flex;
      align-items: center;
@@ -706,4 +757,5 @@ body{
 }
 
     
+
     
