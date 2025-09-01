@@ -1,34 +1,34 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BangleBar</title>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='bblogo.png') }}">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS --> -->
+<!--     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Bootstrap JS (Bundle with Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!--     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='banglestyle.css') }}">
 
 </head>
 
-<body>
+<body> -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid"> -->
 <!--             <a class="navbar-brand" href="{{ url_for('home') }}"> -->
-                <span class="sitename ">
+<!--                 <span class="sitename ">
                     <img src="{{ url_for('static', filename='bblogo.png') }}" alt="Bangle Bar Logo"
                         style="height:40px; width:auto;">
-                </span>
+                </span> -->
 
 <!--             </a> -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+<!--             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,8 +41,8 @@
                     <li class="nav-item login-icon">
                         <a class="nav-link" href="{{url_for('login')}}">
                             <i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
-                    </li>
-                    <li class="nav-item ">
+                    </li> -->
+<!--                     <li class="nav-item ">
                         <a class="nav-link" href="{{url_for('cart')}}">
                             <i id="addcart" class="fa fa-shopping-cart"> Cart</i></a>
                     </li>
@@ -73,7 +73,7 @@
         </div>
     </nav>
 
-
+ -->
    
 
     <!-- Hero Section - Carousel -->
@@ -304,9 +304,511 @@
         document.querySelector(".carousel-btn.left").onclick = prevImage;
         setInterval(nextImage, 3200);
     </script> -->
-    <script src="{{ url_for('static', filename='banglescript.js') }}"></script>
+<!--     <script src="{{ url_for('static', filename='banglescript.js') }}"></script>
 </body>
 
+</html>
+ -->
+
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Bangles — Home</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ------------------------
+       Mobile-first responsive CSS
+       ------------------------ */
+    :root{
+      --primary:#b8860b; /* golden */
+      --accent:#6b6b6b;
+      --bg:#fdfaf6;
+      --muted:#777;
+      --card-bg:#fff;
+      --radius:14px;
+      --container-padding:1rem;
+      --max-width:1200px;
+      --glass: rgba(255,255,255,0.7);
+    }
+    *{box-sizing:border-box}
+    body{font-family: 'Montserrat', system-ui, Arial; margin:0; color:#222; background:var(--bg); -webkit-font-smoothing:antialiased}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Utility container */
+    .container{width:100%; max-width:var(--max-width); margin:0 auto; padding:0 var(--container-padding)}
+
+    /* Header / Nav */
+    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(6px); background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.65)); border-bottom:1px solid rgba(0,0,0,0.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:0.7rem 0}
+    .logo{display:flex; align-items:center; gap:0.6rem; font-weight:700}
+    .logo img{height:40px; width:40px; border-radius:8px; object-fit:cover}
+    .logo h1{font-family:'Playfair Display', serif; font-size:1.05rem; margin:0}
+
+    .menu{display:flex; gap:1rem; align-items:center}
+    .menu a{padding:0.45rem 0.6rem; border-radius:8px; font-size:0.95rem}
+
+    /* Dropdown */
+    .dropdown{position:relative}
+    .dropdown-toggle{display:flex; align-items:center; gap:0.4rem}
+    .dropdown-menu{position:absolute; left:0; top:110%; min-width:180px; background:var(--card-bg); box-shadow:0 8px 24px rgba(0,0,0,0.08); border-radius:10px; overflow:hidden; display:none}
+    .dropdown-menu a{display:block; padding:0.6rem 0.9rem; border-bottom:1px solid rgba(0,0,0,0.03)}
+    .dropdown:hover .dropdown-menu{display:block}
+
+    .icons{display:flex; gap:0.6rem; align-items:center}
+    .icon-btn{padding:0.5rem; border-radius:8px; display:inline-flex; align-items:center; justify-content:center}
+
+    /* Mobile menu */
+    .hamburger{display:flex; align-items:center; gap:0.5rem}
+    .hamb-btn{background:none; border:0; font-size:1.25rem}
+    .mobile-nav{display:none; padding:1rem 0}
+    .mobile-nav a{display:block; padding:0.6rem 0}
+
+    /* Hero */
+    .hero{padding:2.2rem 0 1.6rem}
+    .hero-inner{display:grid; gap:1rem}
+    .hero-card{background:linear-gradient(180deg, rgba(184,134,11,0.09), rgba(255,255,255,0.6)); padding:1.1rem; border-radius:12px}
+    .hero h2{font-family:'Playfair Display', serif; margin:0 0 0.6rem; font-size:1.6rem}
+    .hero p{margin:0 0 1rem; color:var(--muted)}
+    .cta{display:flex; gap:0.7rem; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 0.9rem; border-radius:10px; cursor:pointer; font-weight:600}
+    .btn-primary{background:var(--primary); color:#fff}
+    .btn-outline{background:transparent; border:1px solid rgba(0,0,0,0.08)}
+
+    /* Featured perks */
+    .perks{display:flex; gap:0.8rem; margin:1rem 0 0; overflow:auto}
+    .perk{min-width:150px; background:var(--card-bg); padding:0.9rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); text-align:center}
+    .perk h4{margin:0.6rem 0 0; font-size:0.95rem}
+
+    /* Product grid */
+    .products{padding:1.2rem 0}
+    .filters{display:flex; gap:0.6rem; margin-bottom:0.8rem}
+    .filters button{padding:0.5rem 0.8rem; border-radius:999px; border:1px solid rgba(0,0,0,0.06); background:#fff}
+
+    .grid{display:grid; gap:0.8rem; grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--card-bg); border-radius:12px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.04)}
+    .card .img-wrap{height:220px; overflow:hidden}
+    .card .content{padding:0.8rem}
+    .price{font-weight:700; color:var(--primary)}
+
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns:repeat(2,1fr); gap:0.6rem; margin:1rem 0}
+
+    /* Testimonials */
+    .testi{background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6)); padding:1rem; border-radius:12px}
+
+    /* Blog previews */
+    .blog-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:0.6rem}
+
+    /* Newsletter / Contact */
+    .newsletter{display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin:1rem 0}
+    .newsletter input[type="email"]{flex:1; padding:0.6rem 0.8rem; border-radius:999px; border:1px solid rgba(0,0,0,0.06)}
+
+    footer{padding:1rem 0; margin-top:1.2rem; color:var(--muted)}
+
+    /* --------------------
+       Larger screens
+       -------------------- */
+    @media(min-width:768px){
+      .hero-inner{grid-template-columns:1fr 420px; align-items:center}
+      .perks{margin-top:0}
+      .grid{grid-template-columns:repeat(3,1fr)}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+      .blog-grid{grid-template-columns:repeat(3,1fr)}
+      .mobile-nav{display:none}
+      .menu{display:flex}
+      .hamburger{display:none}
+      .dropdown-menu{top:120%}
+    }
+    @media(min-width:1024px){
+      .grid{grid-template-columns:repeat(4,1fr)}
+      .hero h2{font-size:2.4rem}
+    }
+
+    /* Small screens adjustments */
+    @media(max-width:420px){
+      .card .img-wrap{height:180px}
+      .hero h2{font-size:1.25rem}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <img src="https://via.placeholder.com/80x80.png?text=EB" alt="logo">
+        <div>
+          <h1>Elegant Bangles</h1>
+          <div style="font-size:12px; color:var(--muted)">Handcrafted · Timeless</div>
+        </div>
+      </div>
+
+      <nav class="menu" aria-label="Primary">
+        <div class="hamburger">
+          <button class="hamb-btn" id="hambBtn" aria-label="Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+        <div class="mobile-nav" id="mobileNav">
+          <a href="#home">Home</a>
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle">Bangles <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+              <a href="#products" data-filter="gold">Golden Bangles</a>
+              <a href="#products" data-filter="silver">Silver Bangles</a>
+            </div>
+          </div>
+          <a href="#collections">Collections</a>
+          <a href="#about">About</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="desktop-menu" style="display:none">
+          <!-- This will be shown on larger screens (CSS toggles) -->
+        </div>
+
+        <div class="menu-links" style="display:flex; align-items:center; gap:0.6rem">
+          <div class="dropdown" style="display:inline-block">
+            <a class="dropdown-toggle" href="#">Bangles <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+              <a href="#products" data-filter="gold">Golden Bangles</a>
+              <a href="#products" data-filter="silver">Silver Bangles</a>
+            </div>
+          </div>
+          <a href="#collections">Collections</a>
+          <a href="#about">About</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="icons">
+          <button class="icon-btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button class="icon-btn" title="Cart"><i class="fa-solid fa-bag-shopping"></i></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-inner">
+        <div class="hero-card">
+          <h2>Handcrafted bangles — Jo har pal shine kare</h2>
+          <p>Premium quality golden & silver bangles, handcrafted by skilled artisans. Light-weight, long-lasting finish, perfect for daily wear or special occasions.</p>
+          <div class="cta">
+            <a href="#products" class="btn btn-primary"><i class="fa-solid fa-shop"></i> Shop Now</a>
+            <a href="#collections" class="btn btn-outline">Explore Collections</a>
+          </div>
+          <div class="perks">
+            <div class="perk">
+              <i class="fa-solid fa-truck-fast" style="font-size:20px;"></i>
+              <h4>Fast Shipping</h4>
+              <div style="font-size:13px; color:var(--muted)">All-India delivery</div>
+            </div>
+            <div class="perk">
+              <i class="fa-solid fa-certificate" style="font-size:20px;"></i>
+              <h4>Quality Assured</h4>
+              <div style="font-size:13px; color:var(--muted)">Premium materials</div>
+            </div>
+            <div class="perk">
+              <i class="fa-solid fa-hand-holding-heart" style="font-size:20px;"></i>
+              <h4>Custom Orders</h4>
+              <div style="font-size:13px; color:var(--muted)">Personalize size & finish</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.06)">
+          <img src="https://via.placeholder.com/600x500.png?text=Elegant+Bangles" alt="hero image">
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="products">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap">
+        <h3 style="margin:0">Popular Bangles</h3>
+        <div class="filters">
+          <button onclick="filterProducts('all')">All</button>
+          <button onclick="filterProducts('gold')">Golden</button>
+          <button onclick="filterProducts('silver')">Silver</button>
+        </div>
+      </div>
+
+      <div class="grid" id="productGrid">
+        <!-- Product card (repeat) -->
+        <article class="card" data-category="gold">
+          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Golden+Bangle+1" alt="Golden Bangle 1"></div>
+          <div class="content">
+            <h4>Radiant Golden Bangle</h4>
+            <div style="font-size:13px; color:var(--muted)">Polished finish • Lightweight</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
+              <div class="price">₹1,299</div>
+              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="silver">
+          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Silver+Bangle+1" alt="Silver Bangle 1"></div>
+          <div class="content">
+            <h4>Classic Silver Bangle</h4>
+            <div style="font-size:13px; color:var(--muted)">Oxidized look • Durable</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
+              <div class="price">₹899</div>
+              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="gold">
+          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Golden+Bangle+2" alt="Golden Bangle 2"></div>
+          <div class="content">
+            <h4>Intricate Golden Set</h4>
+            <div style="font-size:13px; color:var(--muted)">Hand-etched patterns</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
+              <div class="price">₹2,499</div>
+              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="silver">
+          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Silver+Bangle+2" alt="Silver Bangle 2"></div>
+          <div class="content">
+            <h4>Modern Silver Loop</h4>
+            <div style="font-size:13px; color:var(--muted)">Minimal & chic</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
+              <div class="price">₹1,099</div>
+              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Add more cards to make page long -->
+        <article class="card" data-category="gold">
+          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Golden+Bangle+3" alt="Golden Bangle 3"></div>
+          <div class="content">
+            <h4>Delicate Gold Cuff</h4>
+            <div style="font-size:13px; color:var(--muted)">Comfort fit</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
+              <div class="price">₹1,599</div>
+              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="silver">
+          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Silver+Bangle+3" alt="Silver Bangle 3"></div>
+          <div class="content">
+            <h4>Layered Silver Set</h4>
+            <div style="font-size:13px; color:var(--muted)">Stack-friendly</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
+              <div class="price">₹1,399</div>
+              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Gallery and more content to make page long -->
+      <h3 style="margin-top:1.2rem">Gallery</h3>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/600x400.png?text=Gallery+1" alt="g1">
+        <img src="https://via.placeholder.com/600x400.png?text=Gallery+2" alt="g2">
+        <img src="https://via.placeholder.com/600x400.png?text=Gallery+3" alt="g3">
+        <img src="https://via.placeholder.com/600x400.png?text=Gallery+4" alt="g4">
+        <img src="https://via.placeholder.com/600x400.png?text=Gallery+5" alt="g5">
+        <img src="https://via.placeholder.com/600x400.png?text=Gallery+6" alt="g6">
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" style="margin-top:1.4rem">
+      <h3>About Elegant Bangles</h3>
+      <div style="display:grid; gap:0.8rem; margin-top:0.6rem">
+        <p style="color:var(--muted)">Elegant Bangles ka mission hai handcrafted, quality bangles ko har ghar tak pahunchana. Hum artisans ke saath milke sustainable material use karte hain aur har piece ka detailed finishing karte hain.</p>
+        <div style="display:flex; gap:0.8rem; flex-wrap:wrap">
+          <div style="flex:1; min-width:220px; background:var(--card-bg); padding:0.9rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.04)">
+            <h4>Our Craft</h4>
+            <p style="margin:0; color:var(--muted); font-size:14px">Traditional techniques + modern finishing.</p>
+          </div>
+          <div style="flex:1; min-width:220px; background:var(--card-bg); padding:0.9rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.04)">
+            <h4>Sizing & Fit</h4>
+            <p style="margin:0; color:var(--muted); font-size:14px">Custom sizing available for perfect fit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" style="margin-top:1.4rem">
+      <h3>Customer Love</h3>
+      <div style="display:flex; gap:0.8rem; margin-top:0.6rem; overflow:hidden" id="testiWrap">
+        <div class="testi" style="min-width:280px">
+          <strong>Priya</strong>
+          <p style="margin:0.4rem 0 0; color:var(--muted)">"Bangles bahut hi light aur beautiful aaye. Delivery fast thi."</p>
+        </div>
+        <div class="testi" style="min-width:280px">
+          <strong>Asha</strong>
+          <p style="margin:0.4rem 0 0; color:var(--muted)">"Custom order perfect fit me aaya, quality zabardast."</p>
+        </div>
+        <div class="testi" style="min-width:280px">
+          <strong>Karan</strong>
+          <p style="margin:0.4rem 0 0; color:var(--muted)">"Packaging secure tha aur finish premium laga."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog" style="margin-top:1.4rem">
+      <h3>From the blog</h3>
+      <div class="blog-grid" style="margin-top:0.6rem">
+        <article style="background:var(--card-bg); padding:0.9rem; border-radius:10px">
+          <h4>How to care for your bangles</h4>
+          <p style="color:var(--muted); font-size:13px">Simple tips to keep shine for years.</p>
+        </article>
+        <article style="background:var(--card-bg); padding:0.9rem; border-radius:10px">
+          <h4>Choosing the right fit</h4>
+          <p style="color:var(--muted); font-size:13px">Measure properly for comfort.</p>
+        </article>
+        <article style="background:var(--card-bg); padding:0.9rem; border-radius:10px">
+          <h4>Mix & match styles</h4>
+          <p style="color:var(--muted); font-size:13px">Pair bangles with modern outfits.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER & CONTACT -->
+    <section id="contact" style="margin-top:1.4rem; margin-bottom:1.6rem">
+      <h3>Contact & Newsletter</h3>
+      <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:0.6rem">
+        <div style="flex:1; min-width:260px; background:var(--card-bg); padding:1rem; border-radius:12px">
+          <h4>Join Newsletter</h4>
+          <p style="color:var(--muted); margin-top:0.4rem">Get offers & new arrivals</p>
+          <div class="newsletter" style="margin-top:0.6rem">
+            <input type="email" id="newsEmail" placeholder="Email address">
+            <button class="btn btn-primary" onclick="subscribe()">Subscribe</button>
+          </div>
+        </div>
+
+        <div style="flex:1; min-width:260px; background:var(--card-bg); padding:1rem; border-radius:12px">
+          <h4>Message Us</h4>
+          <form id="contactForm" onsubmit="handleContact(event)">
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap">
+              <input type="text" id="name" placeholder="Name" style="flex:1; padding:0.6rem; border-radius:8px; border:1px solid rgba(0,0,0,0.06)">
+              <input type="email" id="email" placeholder="Email" style="flex:1; padding:0.6rem; border-radius:8px; border:1px solid rgba(0,0,0,0.06)">
+            </div>
+            <textarea id="message" rows="4" placeholder="Message" style="width:100%; margin-top:0.6rem; padding:0.6rem; border-radius:8px; border:1px solid rgba(0,0,0,0.06)"></textarea>
+            <div style="margin-top:0.6rem"><button class="btn btn-primary" type="submit">Send Message</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <div style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:center">
+      <div>
+        <strong>Elegant Bangles</strong>
+        <div style="font-size:13px; color:var(--muted)">© 2025 Elegant Bangles</div>
+      </div>
+      <div style="display:flex; gap:0.6rem; align-items:center">
+        <a href="#" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" aria-label="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quick scripts -->
+  <script>
+    // Mobile menu toggle
+    const hambBtn = document.getElementById('hambBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    hambBtn && hambBtn.addEventListener('click', () => {
+      if(mobileNav.style.display === 'block') mobileNav.style.display = 'none';
+      else mobileNav.style.display = 'block';
+    });
+
+    // Product filter
+    function filterProducts(cat){
+      const cards = document.querySelectorAll('#productGrid .card');
+      cards.forEach(c => {
+        if(cat === 'all') c.style.display = '';
+        else c.style.display = (c.dataset.category === cat) ? '' : 'none';
+      })
+      // scroll to products
+      document.getElementById('productGrid') && document.getElementById('productGrid').scrollIntoView({behavior:'smooth'});
+    }
+
+    // Dropdown links (mobile) -> use data-filter attribute
+    document.querySelectorAll('[data-filter]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const f = el.getAttribute('data-filter');
+        filterProducts(f);
+      })
+    })
+
+    // Quick view placeholder
+    function quickView(btn){
+      const card = btn.closest('.card');
+      const title = card.querySelector('h4').innerText;
+      alert('Quick view: ' + title + '\n(Replace with modal in production)');
+    }
+
+    // Simple testimonial auto-scroll
+    (function autoScrollTestimonials(){
+      const wrap = document.getElementById('testiWrap');
+      if(!wrap) return;
+      let x = 0;
+      setInterval(()=>{
+        x += 280;
+        if(x > wrap.scrollWidth - wrap.clientWidth) x = 0;
+        wrap.scrollTo({left:x, behavior:'smooth'});
+      }, 3500);
+    })();
+
+    // Newsletter subscribe
+    function subscribe(){
+      const em = document.getElementById('newsEmail').value;
+      if(!em || !em.includes('@')) return alert('Please enter a valid email');
+      alert('Subscribed with ' + em + '\n(Integrate with backend to store)');
+      document.getElementById('newsEmail').value = '';
+    }
+
+    // Contact form (demo)
+    function handleContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      if(!name || !email || !msg) return alert('Please fill all fields');
+      alert('Thanks ' + name + '! Message received. (Hook this to your backend)');
+      document.getElementById('contactForm').reset();
+    }
+
+    // Small accessibility: close mobile menu on resize to large screens
+    window.addEventListener('resize', () => {
+      if(window.innerWidth >= 768){
+        mobileNav.style.display = 'none';
+      }
+    })
+  </script>
+</body>
 </html>
 
 
