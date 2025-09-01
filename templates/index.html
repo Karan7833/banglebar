@@ -2,65 +2,119 @@
 <html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
     <title>BangleBar</title>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='bblogo.png') }}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS (Bundle with Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='banglestyle.css') }}">
-    
+
 </head>
 
 <body>
-    <!-- Header -->
-   <div class="header">
-    <!-- Logo -->
-    <div class="sitename ">
-        <img src="{{ url_for('static', filename='bblogo.png') }}" alt="Bangle Bar Logo"
-            style="height:40px; width:auto;">
-    </div>
-    
 
-    <!-- Search Box -->
-    <div class="search-box">
-        <input type="text" placeholder="Search for bangles, jewelry, products...">
-        <span class="fa fa-search"></span>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <span class="sitename ">
+                    <img src="{{ url_for('static', filename='bblogo.png') }}" alt="Bangle Bar Logo"
+                        style="height:40px; width:auto;">
+                </span>
 
-    <!-- Customer Care -->
-    <div class="customer-care my-btn">
-        <a href="{{ url_for('coustumer_care') }}">
-            <i class="fa fa-headset"></i>
-            <span style="color: black;">Customer Care</span>
-        </a>
-    </div>
-
-    <!-- Header Icons -->
-    <div class="header-icons">
-        <!-- Login -->
-        <div class="login-icon">
-            <form action="{{ url_for('login') }}" method="get">
-                <button type="submit" class="login-btn">
-                    Log <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                </button>
-            </form>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item login-icon">
+                        <a class="nav-link" href="{{url_for('login')}}">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{url_for('cart')}}">
+                            <i id="addcart" class="fa fa-shopping-cart"> Cart</i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Collection
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Bangles</a></li>
+                            <li><a class="dropdown-item" href="#">Jewellery</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Occasion</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('coustumer_care') }}" tabindex="-1" aria-disabled="true"><i
+                                class="fa-solid fa-headset"></i> Customer Care</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search"
+                        placeholder="Search for bangles, jewelry, products..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
         </div>
+    </nav>
+
+
+    <!-- Header -->
+    <div class="header">
+        <!-- Logo -->
+
+
+        <!-- Search Box -->
+
+
+        <!-- Customer Care -->
+        <!-- <div class="customer-care my-btn">
+            <a href="{{ url_for('coustumer_care') }}">
+                <i class="fa fa-headset"></i>
+                <span style="color: black;">Customer Care</span>
+            </a>
+        </div> -->
+
+        <!-- Header Icons -->
+        <!-- <div class="header-icons"> -->
+        <!-- Login -->
+        <!-- <div class="login-icon">
+                <form action="{{ url_for('login') }}" method="get">
+                    <button type="submit" class="login-btn">
+                        Log <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    </button>
+                </form>
+            </div> -->
 
         <!-- Cart -->
-        <div class="cart-icon"><a href="{{ url_for('cart') }}">
-            <i id="addcart" class="fa fa-shopping-cart"> Cart</i>
-            <span class="cart-count">0</span>
-            </a>
-        </div>
+        <!-- <div class="cart-icon"><a href="{{ url_for('cart') }}">
+                    <i id="addcart" class="fa fa-shopping-cart"> Cart</i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div> -->
     </div>
-</div>
+    </div>
 
     <!-- Hero Section - Carousel -->
     <div class="hero-section">
         <div class="carousel">
             <button class="carousel-btn left">&#8592;</button>
-            <img src="static/bangledisp0.png" class="active"
-                alt="Bangles Collection">
+            <img src="static/bangledisp0.png" class="active" alt="Bangles Collection">
             <img src="static/bangledisp1.png" alt="Beautiful Bangles">
             <img src="static/bangledisp2.png" alt="Festive Jewelry">
             <button class="carousel-btn right">&#8594;</button>
@@ -146,17 +200,20 @@
                 <div class="prod-title">Diamond Whisper Ring</div>
                 <div class="prod-price">₹199</div>
                 <button class="buy-btn">Add to Cart</button>
-            </div><div class="product-card">
+            </div>
+            <div class="product-card">
                 <img src="static/ring2.png" alt="Bridal Kangan Set">
                 <div class="prod-title">Diamond Whisper Ring</div>
                 <div class="prod-price">₹249</div>
                 <button class="buy-btn">Add to Cart</button>
-            </div><div class="product-card">
+            </div>
+            <div class="product-card">
                 <img src="static/ring3.png" alt="Bridal Kangan Set">
                 <div class="prod-title">The Imperial Charm Ring</div>
                 <div class="prod-price">₹399</div>
                 <button class="buy-btn">Add to Cart</button>
-            </div><div class="product-card">
+            </div>
+            <div class="product-card">
                 <img src="static/ring5.png" alt="Bridal Kangan Set">
                 <div class="prod-title">Celestial Crown Ring</div>
                 <div class="prod-price">₹559</div>
@@ -173,90 +230,91 @@
     </div>
 
     <!-- ===== Footer v2: Minimal Luxe (Light) ===== -->
-<footer class="bb-footer" role="contentinfo" aria-label="BangleBar footer">
-  <div class="bbf-wrap">
-    <!-- Column: Brand -->
-    <section class="bbf-col bbf-brand">
-      <div class="bbf-logo">
-        <img src="{{ url_for('static', filename='bblogo.png') }}" alt="BangleBar" height="48" width="48">
-        <span>BangleBar</span>
-      </div>
-      <p class="bbf-copy">
-        Elegant bangles & jewelry for everyday luxury. Skin-safe • Lightweight • Nickel-free.
-      </p>
-      <div class="bbf-badges" aria-label="highlights">
-        <span class="bb-chip">7-Day Return</span>
-        <span class="bb-chip">Free Shipping*</span>
-        <span class="bb-chip">COD Available</span>
-      </div>
-    </section>
+    <footer class="bb-footer" role="contentinfo" aria-label="BangleBar footer">
+        <div class="bbf-wrap">
+            <!-- Column: Brand -->
+            <section class="bbf-col bbf-brand">
+                <div class="bbf-logo">
+                    <img src="{{ url_for('static', filename='bblogo.png') }}" alt="BangleBar" height="48" width="48">
+                    <span>BangleBar</span>
+                </div>
+                <p class="bbf-copy">
+                    Elegant bangles & jewelry for everyday luxury. Skin-safe • Lightweight • Nickel-free.
+                </p>
+                <div class="bbf-badges" aria-label="highlights">
+                    <span class="bb-chip">7-Day Return</span>
+                    <span class="bb-chip">Free Shipping*</span>
+                    <span class="bb-chip">COD Available</span>
+                </div>
+            </section>
 
-    <!-- Column: Shop -->
-    <section class="bbf-col">
-      <h4 class="bbf-title">Shop</h4>
-      <ul class="bbf-links">
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="#">New Arrivals</a></li>
-        <li><a href="#">Premium Collection</a></li>
-        <li><a href="{{ url_for('cart') }}">Cart</a></li>
-      </ul>
-    </section>
+            <!-- Column: Shop -->
+            <section class="bbf-col">
+                <h4 class="bbf-title">Shop</h4>
+                <ul class="bbf-links">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Premium Collection</a></li>
+                    <li><a href="{{ url_for('cart') }}">Cart</a></li>
+                </ul>
+            </section>
 
-    <!-- Column: Help -->
-    <section class="bbf-col">
-      <h4 class="bbf-title">Help</h4>
-      <ul class="bbf-links">
-        <li><a href="{{ url_for('coustumer_care') }}">Customer Care</a></li>
-        <li><a href="#">Shipping & Returns</a></li>
-        <li><a href="#">Warranty</a></li>
-        <li><a href="{{ url_for('login') }}">Login</a></li>
-      </ul>
-    </section>
+            <!-- Column: Help -->
+            <section class="bbf-col">
+                <h4 class="bbf-title">Help</h4>
+                <ul class="bbf-links">
+                    <li><a href="{{ url_for('coustumer_care') }}">Customer Care</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                </ul>
+            </section>
 
-    <!-- Column: Stay in touch -->
-    <section class="bbf-col">
-      <h4 class="bbf-title">Stay in touch</h4>
-      <form class="bbf-newsletter" onsubmit="return bbSubscribe(event)">
-        <label for="bb-email" class="sr-only">Email address</label>
-        <input id="bb-email" type="email" placeholder="Enter your email" required>
-        <button type="submit" aria-label="Subscribe">Subscribe</button>
-      </form>
+            <!-- Column: Stay in touch -->
+            <section class="bbf-col">
+                <h4 class="bbf-title">Stay in touch</h4>
+                <form class="bbf-newsletter" onsubmit="return bbSubscribe(event)">
+                    <label for="bb-email" class="sr-only">Email address</label>
+                    <input id="bb-email" type="email" placeholder="Enter your email" required>
+                    <button type="submit" aria-label="Subscribe">Subscribe</button>
+                </form>
 
-      <div class="bbf-social" aria-label="social">
-        <a aria-label="Instagram" href="#"><i class="fab fa-instagram"></i></a>
-        <a aria-label="Facebook" href="#"><i class="fab fa-facebook-f"></i></a>
-        <a aria-label="X" href="#"><i class="fab fa-x-twitter"></i></a>
-        <a aria-label="YouTube" href="#"><i class="fab fa-youtube"></i></a>
-      </div>
+                <div class="bbf-social" aria-label="social">
+                    <a aria-label="Instagram" href="#"><i class="fab fa-instagram"></i></a>
+                    <a aria-label="Facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a aria-label="X" href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a aria-label="YouTube" href="#"><i class="fab fa-youtube"></i></a>
+                </div>
 
-      <div class="bbf-meta">
-        <div class="bbf-selects">
-          <select aria-label="Language">
-            <option selected>English</option>
-            <option>हिंदी</option>
-          </select>
-          <select aria-label="Currency">
-            <option selected>INR (₹)</option>
-          </select>
+                <div class="bbf-meta">
+                    <div class="bbf-selects">
+                        <select aria-label="Language">
+                            <option selected>English</option>
+                            <option>हिंदी</option>
+                        </select>
+                        <select aria-label="Currency">
+                            <option selected>INR (₹)</option>
+                        </select>
+                    </div>
+                    <div class="bbf-pay">
+                        <span class="pay-pill">UPI</span>
+                        <span class="pay-pill">RuPay</span>
+                        <span class="pay-pill">Visa</span>
+                        <span class="pay-pill">Mastercard</span>
+                        <span class="pay-pill">COD</span>
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="bbf-pay">
-          <span class="pay-pill">UPI</span>
-          <span class="pay-pill">RuPay</span>
-          <span class="pay-pill">Visa</span>
-          <span class="pay-pill">Mastercard</span>
-          <span class="pay-pill">COD</span>
-        </div>
-      </div>
-    </section>
-  </div>
 
-  <div class="bbf-bottom">
-    <p>© <span id="bb-year"></span> BangleBar • <a href="#">Privacy</a> • <a href="#">Terms</a> • <a href="#">Sitemap</a></p>
-    <button class="bb-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top">
-      <i class="fa fa-arrow-up"></i>
-    </button>
-  </div>
-</footer>
+        <div class="bbf-bottom">
+            <p>© <span id="bb-year"></span> BangleBar • <a href="#">Privacy</a> • <a href="#">Terms</a> • <a
+                    href="#">Sitemap</a></p>
+            <button class="bb-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top">
+                <i class="fa fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
 
 
     <!-- Carousel JS -->
@@ -280,6 +338,5 @@
     </script>
     <script src="{{ url_for('static', filename='banglescript.js') }}"></script>
 </body>
-
 
 </html>
