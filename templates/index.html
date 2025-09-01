@@ -323,7 +323,7 @@
 
   <style>
     /* ------------------------
-       Mobile-first responsive CSS
+       Mobile-first responsive CSS (Improved for phone readability)
        ------------------------ */
     :root{
       --primary:#b8860b; /* golden */
@@ -335,107 +335,127 @@
       --container-padding:1rem;
       --max-width:1200px;
       --glass: rgba(255,255,255,0.7);
+
+      /* responsive type scale (uses clamp) */
+      --fs-base: 1rem;              /* 16px */
+      --fs-lg: clamp(1.05rem, 1rem + 1.2vw, 1.2rem);
+      --fs-xl: clamp(1.25rem, 1rem + 2.2vw, 1.6rem);
+      --fs-xxl: clamp(1.6rem, 1.6rem + 2.6vw, 2.4rem);
     }
-    *{box-sizing:border-box}
-    body{font-family: 'Montserrat', system-ui, Arial; margin:0; color:#222; background:var(--bg); -webkit-font-smoothing:antialiased}
+
+    html { font-size:16px; }
+    body{font-family: 'Montserrat', system-ui, Arial; margin:0; color:#222; background:var(--bg); -webkit-font-smoothing:antialiased; font-size:var(--fs-base); line-height:1.45; -webkit-text-size-adjust:100%;}
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
+    button{font-family:inherit}
 
     /* Utility container */
-    .container{width:100%; max-width:var(--max-width); margin:0 auto; padding:0 var(--container-padding)}
+    .container{width:100%; max-width:var(--max-width); margin:0 auto; padding:0 var(--container-padding); box-sizing:border-box}
 
     /* Header / Nav */
-    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(6px); background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.65)); border-bottom:1px solid rgba(0,0,0,0.06)}
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:0.7rem 0}
+    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(6px); background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9)); border-bottom:1px solid rgba(0,0,0,0.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:0.75rem 0}
     .logo{display:flex; align-items:center; gap:0.6rem; font-weight:700}
-    .logo img{height:40px; width:40px; border-radius:8px; object-fit:cover}
-    .logo h1{font-family:'Playfair Display', serif; font-size:1.05rem; margin:0}
+    .logo img{height:44px; width:44px; border-radius:8px; object-fit:cover}
+    .logo h1{font-family:'Playfair Display', serif; font-size:var(--fs-lg); margin:0}
 
-    .menu{display:flex; gap:1rem; align-items:center}
-    .menu a{padding:0.45rem 0.6rem; border-radius:8px; font-size:0.95rem}
+    /* Menu layout: mobile-first */
+    .menu{display:flex; align-items:center; gap:0.5rem}
+    .hamburger{display:flex; align-items:center}
+    .hamb-btn{background:none; border:0; font-size:1.35rem; padding:0.5rem; border-radius:8px}
+
+    .mobile-nav{display:block; width:100%; margin-top:0.6rem}
+    .mobile-nav a{display:block; padding:0.6rem 0; font-size:var(--fs-lg)}
+
+    /* Desktop links (hidden on small screens) */
+    .menu-links, .icons{display:none}
 
     /* Dropdown */
     .dropdown{position:relative}
     .dropdown-toggle{display:flex; align-items:center; gap:0.4rem}
     .dropdown-menu{position:absolute; left:0; top:110%; min-width:180px; background:var(--card-bg); box-shadow:0 8px 24px rgba(0,0,0,0.08); border-radius:10px; overflow:hidden; display:none}
-    .dropdown-menu a{display:block; padding:0.6rem 0.9rem; border-bottom:1px solid rgba(0,0,0,0.03)}
+    .dropdown-menu a{display:block; padding:0.6rem 0.9rem; border-bottom:1px solid rgba(0,0,0,0.03); font-size:0.95rem}
     .dropdown:hover .dropdown-menu{display:block}
 
-    .icons{display:flex; gap:0.6rem; align-items:center}
-    .icon-btn{padding:0.5rem; border-radius:8px; display:inline-flex; align-items:center; justify-content:center}
-
-    /* Mobile menu */
-    .hamburger{display:flex; align-items:center; gap:0.5rem}
-    .hamb-btn{background:none; border:0; font-size:1.25rem}
-    .mobile-nav{display:none; padding:1rem 0}
-    .mobile-nav a{display:block; padding:0.6rem 0}
+    .icon-btn{padding:0.55rem; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; font-size:1.05rem}
 
     /* Hero */
-    .hero{padding:2.2rem 0 1.6rem}
+    .hero{padding:2rem 0 1.2rem}
     .hero-inner{display:grid; gap:1rem}
-    .hero-card{background:linear-gradient(180deg, rgba(184,134,11,0.09), rgba(255,255,255,0.6)); padding:1.1rem; border-radius:12px}
-    .hero h2{font-family:'Playfair Display', serif; margin:0 0 0.6rem; font-size:1.6rem}
-    .hero p{margin:0 0 1rem; color:var(--muted)}
+    .hero-card{background:linear-gradient(180deg, rgba(184,134,11,0.06), rgba(255,255,255,0.6)); padding:1.15rem; border-radius:12px}
+    .hero h2{font-family:'Playfair Display', serif; margin:0 0 0.6rem; font-size:var(--fs-xxl); line-height:1.12}
+    .hero p{margin:0 0 1rem; color:var(--muted); font-size:var(--fs-lg)}
     .cta{display:flex; gap:0.7rem; flex-wrap:wrap}
-    .btn{display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 0.9rem; border-radius:10px; cursor:pointer; font-weight:600}
+
+    .btn{display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1rem; border-radius:12px; cursor:pointer; font-weight:600; font-size:var(--fs-lg); touch-action:manipulation}
     .btn-primary{background:var(--primary); color:#fff}
     .btn-outline{background:transparent; border:1px solid rgba(0,0,0,0.08)}
 
     /* Featured perks */
-    .perks{display:flex; gap:0.8rem; margin:1rem 0 0; overflow:auto}
-    .perk{min-width:150px; background:var(--card-bg); padding:0.9rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); text-align:center}
+    .perks{display:flex; gap:0.8rem; margin:1rem 0 0; overflow:auto; padding-bottom:0.25rem}
+    .perk{min-width:160px; background:var(--card-bg); padding:0.9rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); text-align:center}
     .perk h4{margin:0.6rem 0 0; font-size:0.95rem}
 
     /* Product grid */
-    .products{padding:1.2rem 0}
-    .filters{display:flex; gap:0.6rem; margin-bottom:0.8rem}
-    .filters button{padding:0.5rem 0.8rem; border-radius:999px; border:1px solid rgba(0,0,0,0.06); background:#fff}
+    .products{padding:1rem 0}
+    .filters{display:flex; gap:0.6rem; margin-bottom:0.8rem; flex-wrap:wrap}
+    .filters button{padding:0.55rem 0.8rem; border-radius:999px; border:1px solid rgba(0,0,0,0.06); background:#fff; font-size:var(--fs-lg)}
 
-    .grid{display:grid; gap:0.8rem; grid-template-columns:repeat(2,1fr)}
+    /* Use auto-fit for responsive grid */
+    .grid{display:grid; gap:0.8rem; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))}
     .card{background:var(--card-bg); border-radius:12px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.04)}
-    .card .img-wrap{height:220px; overflow:hidden}
-    .card .content{padding:0.8rem}
-    .price{font-weight:700; color:var(--primary)}
+    .card .img-wrap{height:0; padding-top:100%; position:relative; overflow:hidden}
+    .card .img-wrap img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+    .card .content{padding:0.9rem}
+    .card h4{font-size:1.05rem; margin:0 0 0.2rem}
+    .price{font-weight:700; color:var(--primary); font-size:1rem}
 
     /* Gallery */
     .gallery{display:grid; grid-template-columns:repeat(2,1fr); gap:0.6rem; margin:1rem 0}
 
     /* Testimonials */
-    .testi{background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6)); padding:1rem; border-radius:12px}
+    .testi{background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)); padding:1rem; border-radius:12px}
 
     /* Blog previews */
     .blog-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:0.6rem}
 
     /* Newsletter / Contact */
     .newsletter{display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin:1rem 0}
-    .newsletter input[type="email"]{flex:1; padding:0.6rem 0.8rem; border-radius:999px; border:1px solid rgba(0,0,0,0.06)}
+    .newsletter input[type="email"]{flex:1; padding:0.65rem 0.8rem; border-radius:999px; border:1px solid rgba(0,0,0,0.06); font-size:var(--fs-lg)}
 
-    footer{padding:1rem 0; margin-top:1.2rem; color:var(--muted)}
+    footer{padding:1rem 0; margin-top:1.2rem; color:var(--muted); font-size:0.95rem}
 
     /* --------------------
        Larger screens
        -------------------- */
-    @media(min-width:768px){
+    @media(min-width:640px){
       .hero-inner{grid-template-columns:1fr 420px; align-items:center}
       .perks{margin-top:0}
-      .grid{grid-template-columns:repeat(3,1fr)}
       .gallery{grid-template-columns:repeat(3,1fr)}
       .blog-grid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(min-width:768px){
+      .menu-links, .icons{display:flex; align-items:center; gap:0.6rem}
       .mobile-nav{display:none}
-      .menu{display:flex}
       .hamburger{display:none}
-      .dropdown-menu{top:120%}
+      .grid{grid-template-columns:repeat(3,1fr)}
+      .hero h2{font-size:clamp(1.8rem, 2.3vw + 1.2rem, 2.6rem)}
     }
     @media(min-width:1024px){
       .grid{grid-template-columns:repeat(4,1fr)}
-      .hero h2{font-size:2.4rem}
+      .hero h2{font-size:2.6rem}
     }
 
     /* Small screens adjustments */
     @media(max-width:420px){
-      .card .img-wrap{height:180px}
-      .hero h2{font-size:1.25rem}
+      :root{--fs-lg:1rem; --fs-xl:1.15rem; --fs-xxl:1.4rem}
+      .hero h2{font-size:1.3rem}
+      .card .img-wrap{padding-top:92%}
+      .perk{min-width:140px}
     }
+
+    /* improve tappable sizes */
+    a, button { -webkit-tap-highlight-color: rgba(0,0,0,0.06); }
   </style>
 </head>
 
@@ -472,11 +492,7 @@
           <a href="#contact">Contact</a>
         </div>
 
-        <div class="desktop-menu" style="display:none">
-          <!-- This will be shown on larger screens (CSS toggles) -->
-        </div>
-
-        <div class="menu-links" style="display:flex; align-items:center; gap:0.6rem">
+        <div class="menu-links" style="display:none">
           <div class="dropdown" style="display:inline-block">
             <a class="dropdown-toggle" href="#">Bangles <i class="fa-solid fa-chevron-down"></i></a>
             <div class="dropdown-menu">
@@ -490,7 +506,7 @@
           <a href="#contact">Contact</a>
         </div>
 
-        <div class="icons">
+        <div class="icons" style="display:none">
           <button class="icon-btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
           <button class="icon-btn" title="Cart"><i class="fa-solid fa-bag-shopping"></i></button>
         </div>
@@ -537,7 +553,7 @@
     <!-- PRODUCTS -->
     <section id="products" class="products">
       <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap">
-        <h3 style="margin:0">Popular Bangles</h3>
+        <h3 style="margin:0; font-size:var(--fs-xl)">Popular Bangles</h3>
         <div class="filters">
           <button onclick="filterProducts('all')">All</button>
           <button onclick="filterProducts('gold')">Golden</button>
@@ -623,7 +639,7 @@
       </div>
 
       <!-- Gallery and more content to make page long -->
-      <h3 style="margin-top:1.2rem">Gallery</h3>
+      <h3 style="margin-top:1.2rem; font-size:var(--fs-xl)">Gallery</h3>
       <div class="gallery">
         <img src="https://via.placeholder.com/600x400.png?text=Gallery+1" alt="g1">
         <img src="https://via.placeholder.com/600x400.png?text=Gallery+2" alt="g2">
@@ -636,7 +652,7 @@
 
     <!-- ABOUT -->
     <section id="about" style="margin-top:1.4rem">
-      <h3>About Elegant Bangles</h3>
+      <h3 style="font-size:var(--fs-xl)">About Elegant Bangles</h3>
       <div style="display:grid; gap:0.8rem; margin-top:0.6rem">
         <p style="color:var(--muted)">Elegant Bangles ka mission hai handcrafted, quality bangles ko har ghar tak pahunchana. Hum artisans ke saath milke sustainable material use karte hain aur har piece ka detailed finishing karte hain.</p>
         <div style="display:flex; gap:0.8rem; flex-wrap:wrap">
@@ -654,7 +670,7 @@
 
     <!-- TESTIMONIALS -->
     <section id="testimonials" style="margin-top:1.4rem">
-      <h3>Customer Love</h3>
+      <h3 style="font-size:var(--fs-xl)">Customer Love</h3>
       <div style="display:flex; gap:0.8rem; margin-top:0.6rem; overflow:hidden" id="testiWrap">
         <div class="testi" style="min-width:280px">
           <strong>Priya</strong>
@@ -673,7 +689,7 @@
 
     <!-- BLOG -->
     <section id="blog" style="margin-top:1.4rem">
-      <h3>From the blog</h3>
+      <h3 style="font-size:var(--fs-xl)">From the blog</h3>
       <div class="blog-grid" style="margin-top:0.6rem">
         <article style="background:var(--card-bg); padding:0.9rem; border-radius:10px">
           <h4>How to care for your bangles</h4>
@@ -692,7 +708,7 @@
 
     <!-- NEWSLETTER & CONTACT -->
     <section id="contact" style="margin-top:1.4rem; margin-bottom:1.6rem">
-      <h3>Contact & Newsletter</h3>
+      <h3 style="font-size:var(--fs-xl)">Contact & Newsletter</h3>
       <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:0.6rem">
         <div style="flex:1; min-width:260px; background:var(--card-bg); padding:1rem; border-radius:12px">
           <h4>Join Newsletter</h4>
@@ -767,7 +783,8 @@
     function quickView(btn){
       const card = btn.closest('.card');
       const title = card.querySelector('h4').innerText;
-      alert('Quick view: ' + title + '\n(Replace with modal in production)');
+      alert('Quick view: ' + title + '
+(Replace with modal in production)');
     }
 
     // Simple testimonial auto-scroll
@@ -786,7 +803,8 @@
     function subscribe(){
       const em = document.getElementById('newsEmail').value;
       if(!em || !em.includes('@')) return alert('Please enter a valid email');
-      alert('Subscribed with ' + em + '\n(Integrate with backend to store)');
+      alert('Subscribed with ' + em + '
+(Integrate with backend to store)');
       document.getElementById('newsEmail').value = '';
     }
 
@@ -810,6 +828,3 @@
   </script>
 </body>
 </html>
-
-
-
