@@ -1,831 +1,243 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BangleBar</title>
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='bblogo.png') }}">
-    <!-- Bootstrap CSS --> 
-<!--     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-
-    <!-- Bootstrap JS (Bundle with Popper) -->
-<!--     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
-
-
-<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='banglestyle.css') }}">
-
-</head>
-
-<body> -->
-
-<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid"> -->
-<!--             <a class="navbar-brand" href="{{ url_for('home') }}"> -->
-<!--                 <span class="sitename ">
-                    <img src="{{ url_for('static', filename='bblogo.png') }}" alt="Bangle Bar Logo"
-                        style="height:40px; width:auto;">
-                </span> -->
-
-<!--             </a> -->
-<!--             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item login-icon">
-                        <a class="nav-link" href="{{url_for('login')}}">
-                            <i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
-                    </li> -->
-<!--                     <li class="nav-item ">
-                        <a class="nav-link" href="{{url_for('cart')}}">
-                            <i id="addcart" class="fa fa-shopping-cart"> Cart</i></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Collection
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Bangles</a></li>
-                            <li><a class="dropdown-item" href="#">Jewellery</a></li>
-                            <li>
-                                <a class="dropdown-item" href="#">Occasion</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('coustumer_care') }}" tabindex="-1" aria-disabled="true"><i
-                                class="fa-solid fa-headset"></i> Customer Care</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search"
-                        placeholder="Search for bangles, jewelry, products..." aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-
- -->
-   
-
-    <!-- Hero Section - Carousel -->
-<!--     <div class="hero-section">
-        <div class="carousel">
-            <button class="carousel-btn left">&#8592;</button>
-            <img src="static/bangledisp0.png" class="active" alt="Bangles Collection">
-            <img src="static/bangledisp1.png" alt="Beautiful Bangles">
-            <img src="static/bangledisp2.png" alt="Festive Jewelry">
-            <button class="carousel-btn right">&#8594;</button>
-        </div>
-    </div>
-    <div class="feature-bar" role="region" aria-label="Shopping highlights">
-        <div class="features"> <!-- Return / Exchange -->
-<!--             <div class="item" aria-label="7 Days Easy Return"> <span class="icon" aria-hidden="true"> -->
-<!--                     <!-- looped arrow (return) --> 
-<!--     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 12l3-3m0 0l3 3m-3-3v5a6 6 0 106 6h5" />
-                    </svg> </span>
-                <div>
-                    <div class="label">7 Days Easy Return</div>
-                    <div class="sublabel">Hassle‑free pickup & quick refunds</div>
-                </div> <span class="shine"></span> --> 
-<!--             </div> <!-- Cash on Delivery --> 
-<!--             <div class="item" aria-label="Cash on Delivery"> <span class="icon" aria-hidden="true"> <!-- rupee coin --> 
-<!--                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" -->
-<!--                         stroke-linejoin="round"> -->
-<!--                         <circle cx="12" cy="12" r="9"></circle> -->
-<!--                         <path d="M9 8h6M9 11h5c-1.5 2-3.8 3-6 3"></path> -->
-<!--                     </svg> </span> -->
-<!--                 <div> --> 
-<!--                     <div class="label">Cash on Delivery <span class="badge">COD</span></div>
-                    <div class="sublabel">Pay when it arrives at your door</div>
-                </div> <span class="shine"></span>
-            </div> <!-- Bangle Icon (Category) -->
-<!--             <div class="item" aria-label="Premium Bangles"> <span class="icon" aria-hidden="true">
-                    <!-- stylized bangle pair -->
-<!--     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" -->
-<!--                         stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-<!--                         <ellipse cx="9" cy="12" rx="5.5" ry="3.5"></ellipse>
-                        <ellipse cx="15" cy="12" rx="5.5" ry="3.5"></ellipse>
-                    </svg> </span>
-                <div>
-                    <div class="label">Premium Bangles</div>
-                    <div class="sublabel">Nickel‑free • Skin‑safe • Lightweight</div>
-                </div> <span class="shine"></span>
-            </div> <!-- Fancy Design / Craft -->
-<!--             <div class="item" aria-label="Fancy Designer Styles"> <span class="icon" aria-hidden="true"> -->
-<!-- <!--                     sparkle star -->
-<!--                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" --> 
-<!--                         stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z" />
-                    </svg> </span>
-                <div>
-                    <div class="label">Fancy Designer Styles</div>
-                    <div class="sublabel">New drops every week</div>
-                </div> <span class="shine"></span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Products Grid -->
-<!--     <div class="products-section">
-        <div class="products-heading">Shop Popular Products</div>
-        <div class="products-grid">
-            <div class="product-card">
-                <img src="static/bangle4.png" alt="speard Bangles">
-                <div class="prod-title">Traditional Gold Bangles</div>
-                <div class="prod-price">₹1,599</div>
-                <button class="buy-btn">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="static/bangle3.png" alt="Silver Bangles">
-                <div class="prod-title">Elegant Silver Bangles</div>
-                <div class="prod-price">₹849</div>
-                <button class="buy-btn">Add to Cart</button>
-            </div> -->
-<!--             <div class="product-card">
-                <img src="static/bangle2.png" alt="Colorful Set">
-                <div class="prod-title">Colorful Bangles Set</div>
-                <div class="prod-price">₹499</div>
-                <button class="buy-btn">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="static/bangle5.png" alt="Bridal Kangan Set">
-                <div class="prod-title">Bridal Kangan Set</div>
-                <div class="prod-price">₹2,199</div>
-                <button class="buy-btn">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="static/ring1.png" alt="Bridal Kangan Set">
-                <div class="prod-title">Diamond Whisper Ring</div>
-                <div class="prod-price">₹199</div>
-                <button class="buy-btn">Add to Cart</button> -->
-<!--             </div>
-            <div class="product-card">
-                <img src="static/ring2.png" alt="Bridal Kangan Set">
-                <div class="prod-title">Diamond Whisper Ring</div>
-                <div class="prod-price">₹249</div>
-                <button class="buy-btn">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="static/ring3.png" alt="Bridal Kangan Set">
-                <div class="prod-title">The Imperial Charm Ring</div>
-                <div class="prod-price">₹399</div>
-                <button class="buy-btn">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="static/ring5.png" alt="Bridal Kangan Set">
-                <div class="prod-title">Celestial Crown Ring</div> -->
-<!--                 <div class="prod-price">₹559</div>
-                <button class="buy-btn">Add to Cart</button>
-            </div> -->
-            <!-- More products add karein as needed -->
-<!--         </div>
-        <div class="video-hero">
-            <video src="{{ url_for('static', filename='bangles1234.mp4') }}" controls autoplay loop muted
-                width="100%"></video>
-
-        </div>
-
-    </div> -->
-
-    <!-- ===== Footer v2: Minimal Luxe (Light) ===== -->
-<!--     <footer class="bb-footer" role="contentinfo" aria-label="BangleBar footer">
-        <div class="bbf-wrap">
-            <!-- Column: Brand -->
-<!--             <section class="bbf-col bbf-brand">
-                <div class="bbf-logo">
-                    <img src="{{ url_for('static', filename='bblogo.png') }}" alt="BangleBar" height="48" width="48">
-                    <span>BangleBar</span>
-                </div>
-                <p class="bbf-copy">
-                    Elegant bangles & jewelry for everyday luxury. Skin-safe • Lightweight • Nickel-free.
-                </p>
-                <div class="bbf-badges" aria-label="highlights">
-                    <span class="bb-chip">7-Day Return</span>
-                    <span class="bb-chip">Free Shipping*</span>
-                    <span class="bb-chip">COD Available</span>
-                </div> --> 
-<!--             </section> -->
-
-            <!-- Column: Shop -->
-<!--             <section class="bbf-col">
-                <h4 class="bbf-title">Shop</h4>
-                <ul class="bbf-links">
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">Premium Collection</a></li>
-                    <li><a href="{{ url_for('cart') }}">Cart</a></li>
-                </ul>
-            </section>
- -->
-            <!-- Column: Help -->
-<!--             <section class="bbf-col">
-                <h4 class="bbf-title">Help</h4>
-                <ul class="bbf-links">
-                    <li><a href="{{ url_for('coustumer_care') }}">Customer Care</a></li>
-                    <li><a href="#">Shipping & Returns</a></li>
-                    <li><a href="#">Warranty</a></li>
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
-                </ul>
-            </section> -->
-
-            <!-- Column: Stay in touch -->
-<!--             <section class="bbf-col">
-                <h4 class="bbf-title">Stay in touch</h4>
-                <form class="bbf-newsletter" onsubmit="return bbSubscribe(event)">
-                    <label for="bb-email" class="sr-only">Email address</label>
-                    <input id="bb-email" type="email" placeholder="Enter your email" required>
-                    <button type="submit" aria-label="Subscribe">Subscribe</button>
-                </form>
-
-                <div class="bbf-social" aria-label="social">
-                    <a aria-label="Instagram" href="#"><i class="fab fa-instagram"></i></a>
-                    <a aria-label="Facebook" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a aria-label="X" href="#"><i class="fab fa-x-twitter"></i></a>
-                    <a aria-label="YouTube" href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-
-                <div class="bbf-meta">
-                    <div class="bbf-selects">
-                        <select aria-label="Language">
-                            <option selected>English</option>
-                            <option>हिंदी</option>
-                        </select>
-                        <select aria-label="Currency">
-                            <option selected>INR (₹)</option>
-                        </select>
-                    </div>
-                    <div class="bbf-pay">
-                        <span class="pay-pill">UPI</span>
-                        <span class="pay-pill">RuPay</span>
-                        <span class="pay-pill">Visa</span>
-                        <span class="pay-pill">Mastercard</span>
-                        <span class="pay-pill">COD</span>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div class="bbf-bottom">
-            <p>© <span id="bb-year"></span> BangleBar • <a href="#">Privacy</a> • <a href="#">Terms</a> • <a
-                    href="#">Sitemap</a></p> -->
-<!--             <button class="bb-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top">
-                <i class="fa fa-arrow-up"></i>
-            </button>
-        </div>
-    </footer> -->
-
-    <!-- Carousel JS -->
-<!--     <script>
-        const images = document.querySelectorAll(".carousel img");
-        let current = 0;
-        function showImage(idx) {
-            images.forEach((img, i) => img.classList.toggle('active', i === idx));
-        }
-        function nextImage() {
-            current = (current + 1) % images.length;
-            showImage(current);
-        }
-        function prevImage() {
-            current = (current - 1 + images.length) % images.length;
-            showImage(current);
-        }
-        document.querySelector(".carousel-btn.right").onclick = nextImage;
-        document.querySelector(".carousel-btn.left").onclick = prevImage;
-        setInterval(nextImage, 3200);
-    </script> -->
-<!--     <script src="{{ url_for('static', filename='banglescript.js') }}"></script>
-</body>
-
-</html>
- -->
-
-<!doctype html>
-<html lang="hi">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elegant Bangles — Home</title>
-  <!-- Google Fonts & Font Awesome -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-    /* ------------------------
-       Mobile-first responsive CSS (Improved for phone readability)
-       ------------------------ */
-    :root{
-      --primary:#b8860b; /* golden */
-      --accent:#6b6b6b;
-      --bg:#fdfaf6;
-      --muted:#777;
-      --card-bg:#fff;
-      --radius:14px;
-      --container-padding:1rem;
-      --max-width:1200px;
-      --glass: rgba(255,255,255,0.7);
-
-      /* responsive type scale (uses clamp) */
-      --fs-base: 1rem;              /* 16px */
-      --fs-lg: clamp(1.05rem, 1rem + 1.2vw, 1.2rem);
-      --fs-xl: clamp(1.25rem, 1rem + 2.2vw, 1.6rem);
-      --fs-xxl: clamp(1.6rem, 1.6rem + 2.6vw, 2.4rem);
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>karan's Portfolio</title>
+    <link rel="stylesheet" href="logregstyle.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+    <script defer src="script.js"></script>
+     <style>
+    #certificateImage {
+      display: none;
+      max-width: 100%;
+      border: 2px solid #333;
     }
-
-    html { font-size:16px; }
-    body{font-family: 'Montserrat', system-ui, Arial; margin:0; color:#222; background:var(--bg); -webkit-font-smoothing:antialiased; font-size:var(--fs-base); line-height:1.45; -webkit-text-size-adjust:100%;}
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-    button{font-family:inherit}
-
-    /* Utility container */
-    .container{width:100%; max-width:var(--max-width); margin:0 auto; padding:0 var(--container-padding); box-sizing:border-box}
-
-    /* Header / Nav */
-    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(6px); background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9)); border-bottom:1px solid rgba(0,0,0,0.06)}
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:0.75rem 0}
-    .logo{display:flex; align-items:center; gap:0.6rem; font-weight:700}
-    .logo img{height:44px; width:44px; border-radius:8px; object-fit:cover}
-    .logo h1{font-family:'Playfair Display', serif; font-size:var(--fs-lg); margin:0}
-
-    /* Menu layout: mobile-first */
-    .menu{display:flex; align-items:center; gap:0.5rem}
-    .hamburger{display:flex; align-items:center}
-    .hamb-btn{background:none; border:0; font-size:1.35rem; padding:0.5rem; border-radius:8px}
-
-    .mobile-nav{display:block; width:100%; margin-top:0.6rem}
-    .mobile-nav a{display:block; padding:0.6rem 0; font-size:var(--fs-lg)}
-
-    /* Desktop links (hidden on small screens) */
-    .menu-links, .icons{display:none}
-
-    /* Dropdown */
-    .dropdown{position:relative}
-    .dropdown-toggle{display:flex; align-items:center; gap:0.4rem}
-    .dropdown-menu{position:absolute; left:0; top:110%; min-width:180px; background:var(--card-bg); box-shadow:0 8px 24px rgba(0,0,0,0.08); border-radius:10px; overflow:hidden; display:none}
-    .dropdown-menu a{display:block; padding:0.6rem 0.9rem; border-bottom:1px solid rgba(0,0,0,0.03); font-size:0.95rem}
-    .dropdown:hover .dropdown-menu{display:block}
-
-    .icon-btn{padding:0.55rem; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; font-size:1.05rem}
-
-    /* Hero */
-    .hero{padding:2rem 0 1.2rem}
-    .hero-inner{display:grid; gap:1rem}
-    .hero-card{background:linear-gradient(180deg, rgba(184,134,11,0.06), rgba(255,255,255,0.6)); padding:1.15rem; border-radius:12px}
-    .hero h2{font-family:'Playfair Display', serif; margin:0 0 0.6rem; font-size:var(--fs-xxl); line-height:1.12}
-    .hero p{margin:0 0 1rem; color:var(--muted); font-size:var(--fs-lg)}
-    .cta{display:flex; gap:0.7rem; flex-wrap:wrap}
-
-    .btn{display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1rem; border-radius:12px; cursor:pointer; font-weight:600; font-size:var(--fs-lg); touch-action:manipulation}
-    .btn-primary{background:var(--primary); color:#fff}
-    .btn-outline{background:transparent; border:1px solid rgba(0,0,0,0.08)}
-
-    /* Featured perks */
-    .perks{display:flex; gap:0.8rem; margin:1rem 0 0; overflow:auto; padding-bottom:0.25rem}
-    .perk{min-width:160px; background:var(--card-bg); padding:0.9rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); text-align:center}
-    .perk h4{margin:0.6rem 0 0; font-size:0.95rem}
-
-    /* Product grid */
-    .products{padding:1rem 0}
-    .filters{display:flex; gap:0.6rem; margin-bottom:0.8rem; flex-wrap:wrap}
-    .filters button{padding:0.55rem 0.8rem; border-radius:999px; border:1px solid rgba(0,0,0,0.06); background:#fff; font-size:var(--fs-lg)}
-
-    /* Use auto-fit for responsive grid */
-    .grid{display:grid; gap:0.8rem; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))}
-    .card{background:var(--card-bg); border-radius:12px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.04)}
-    .card .img-wrap{height:0; padding-top:100%; position:relative; overflow:hidden}
-    .card .img-wrap img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-    .card .content{padding:0.9rem}
-    .card h4{font-size:1.05rem; margin:0 0 0.2rem}
-    .price{font-weight:700; color:var(--primary); font-size:1rem}
-
-    /* Gallery */
-    .gallery{display:grid; grid-template-columns:repeat(2,1fr); gap:0.6rem; margin:1rem 0}
-
-    /* Testimonials */
-    .testi{background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)); padding:1rem; border-radius:12px}
-
-    /* Blog previews */
-    .blog-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:0.6rem}
-
-    /* Newsletter / Contact */
-    .newsletter{display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin:1rem 0}
-    .newsletter input[type="email"]{flex:1; padding:0.65rem 0.8rem; border-radius:999px; border:1px solid rgba(0,0,0,0.06); font-size:var(--fs-lg)}
-
-    footer{padding:1rem 0; margin-top:1.2rem; color:var(--muted); font-size:0.95rem}
-
-    /* --------------------
-       Larger screens
-       -------------------- */
-    @media(min-width:640px){
-      .hero-inner{grid-template-columns:1fr 420px; align-items:center}
-      .perks{margin-top:0}
-      .gallery{grid-template-columns:repeat(3,1fr)}
-      .blog-grid{grid-template-columns:repeat(3,1fr)}
-    }
-    @media(min-width:768px){
-      .menu-links, .icons{display:flex; align-items:center; gap:0.6rem}
-      .mobile-nav{display:none}
-      .hamburger{display:none}
-      .grid{grid-template-columns:repeat(3,1fr)}
-      .hero h2{font-size:clamp(1.8rem, 2.3vw + 1.2rem, 2.6rem)}
-    }
-    @media(min-width:1024px){
-      .grid{grid-template-columns:repeat(4,1fr)}
-      .hero h2{font-size:2.6rem}
-    }
-
-    /* Small screens adjustments */
-    @media(max-width:420px){
-      :root{--fs-lg:1rem; --fs-xl:1.15rem; --fs-xxl:1.4rem}
-      .hero h2{font-size:1.3rem}
-      .card .img-wrap{padding-top:92%}
-      .perk{min-width:140px}
-    }
-
-    /* improve tappable sizes */
-    a, button { -webkit-tap-highlight-color: rgba(0,0,0,0.06); }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container nav">
-      <div class="logo">
-        <img src="https://via.placeholder.com/80x80.png?text=EB" alt="logo">
+    <!-- Header & Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">Karan's Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#projects" data-bs-toggle="dropdown">Projects</a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#elegantbangles">Elegant Bangles</a></li>
+                            <li><a class="dropdown-item" href="#chatingapp">Chatting app</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section text-center">
+        <div class="hero-content">
+            <div class="typewriter-wrapper">
+                <h1 class="typewriter-text">
+                    Hello, I'm <span>Karan Rathour</span>
+                </h1>
+            </div>
+
+            <div>
+                <a href="https://www.instagram.com/rathour_karaan/" target="_blank" class="text-danger mx-3 fs-3"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/917452916102" target="_blank" class="text-success mx-3 fs-3"><i
+                        class="fab fa-whatsapp"></i></a>
+                <a href="https://github.com/dashboard" target="_blank" class="text-light mx-3 fs-3"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/karan-rathour-265128315/" target="_blank"
+                    class="text-primary mx-3 fs-3"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p class="web">Web Developer | Designer | Freelancer</p>
+            <a href="#projects" class="btn btn-light btn-lg">View My Work</a>
+        </div>
+        <!-- Skills & Qualification -->
+        <div class="d-flex flex-wrap justify-content-center mt-4">
+            <div class="skills-card m-2">
+                <h2>Technical Skills</h2>
+                <div class="skill-item"><i>✅</i> Python</div>
+                <div class="skill-item"><i>✅</i> C++</div>
+                <div class="skill-item"><i>✅</i> JavaScript</div>
+                <div class="skill-item"><i>✅</i> HTML, CSS</div>
+                <div class="skill-item"><i>✅</i> DBMS</div>
+                <div class="skill-item php"><i>🟡</i> PHP – 1/4 complete</div>
+                <div class="php-progress">
+                    <div class="php-progress-bar"></div>
+                </div>
+            </div>
+            <div class="skills-card m-2">
+                <h2>Academic Qualification</h2>
+                <div class="skill-item"><i>✅</i> 10th from UP BOARD</div>
+                <div class="skill-item"><i>✅</i> 12th from UP BOARD</div>
+                <div class="skill-item php"><i>🟡</i> BCA (DBRAU) - 5th Sem</div>
+                <div class="php-progress">
+                    <div class="bca-progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about text-center py-5">
+        <h2>About Me</h2>
+       <p>
+  Hello! I'm <strong>Karan Rathour</strong>, a passionate and self-driven web developer currently pursuing my Bachelor of Computer Applications (BCA). With a strong foundation in front-end technologies like HTML, CSS, and JavaScript, along with backend knowledge of Python and PHP, I enjoy transforming ideas into interactive and user-friendly digital experiences. I have also worked with tools like Bootstrap and MySQL, and I’m currently expanding my skills in full-stack development.
+  <br><br>
+  My journey in programming began with curiosity and evolved into a deep commitment to learning and building. Whether it’s developing responsive websites, creating real-time chat applications, or designing UI/UX layouts, I focus on writing clean, maintainable code that solves real-world problems. I’ve completed multiple personal projects like e-commerce websites and weather apps, and I continue to challenge myself with new technologies and frameworks.
+  <br><br>
+  Apart from coding, I enjoy creative problem-solving and collaborating on projects that make a difference. I believe in continuous learning and staying updated with the latest trends in web development. My goal is to become a skilled full-stack developer and contribute to innovative projects that push the boundaries of technology.
+  <br><br>
+  If you're looking for someone who is hardworking, eager to grow, and dedicated to building meaningful digital solutions — I’d love to connect!
+</p>
+
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Education</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">BCA</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Dr Bhimrao Ambedkar University, Agra (2023-2026)
+                            </h6>
+                            <ul class="text-muted">
+                                <li>CGPA: 7.9 (Till 4th Sem)</li>
+                                <li>Certificate: Cisco Python <i class="fa-solid fa-images"></i>  <a     id="viewButton">    : View Certificate</a>
+  <img id="certificateImage" src="certificate.jpg" alt="Certificate">
+</li>
+                                <li>Full-stack projects: Python, JS & MySQL</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section text-center py-5">
+        <h2 class="section-title">Services</h2>
+        <div class="card-container d-flex justify-content-center flex-wrap">
+            <div class="card m-2 p-3">
+                <i class="fas fa-code fa-2x"></i>
+                <h3>Web Development</h3>
+                <p>Modern, responsive websites using HTML, CSS, JS & more.</p>
+            </div>
+            <div class="card m-2 p-3">
+                <i class="fas fa-paint-brush fa-2x"></i>
+                <h3>UI/UX Design</h3>
+                <p>Clean, creative and user-friendly interface design.</p>
+            </div>
+            <div class="card m-2 p-3">
+                <i class="fas fa-mobile-alt fa-2x"></i>
+                <h3>Responsive Design</h3>
+                <p>Ensuring your site looks great on all devices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section dark text-center py-5">
+        <h2 class="section-title">Projects</h2>
+        <div class="card-container d-flex justify-content-center flex-wrap">
+            <div class="card m-2">
+                <img src="https://via.placeholder.com/300x200" alt="Elegant Bangles" />
+                <h3 id="elegantbangles">Elegant Bangles</h3>
+                <p>Jewelry e-commerce site with stunning front-end catalog.</p>
+                <p class="tags">HTML | CSS | JS | PHP</p>
+                <a href="#" class="project-btn">Live Demo</a>
+            </div>
+            <div class="card m-2">
+                <img src="https://via.placeholder.com/300x200" alt="Chatting app" />
+                <h3 id="chatingapp">Chatting app</h3>
+                <p class="tags">Python | MySQL | HTML | Bootstrap</p>
+                <a href="#" class="project-btn">GitHub</a>
+            </div>
+            <div class="card m-2">
+                <img src="https://via.placeholder.com/300x200" alt="Weather App" />
+                <h3>Weather App</h3>
+                <p>Real-time weather app using OpenWeather API & JS fetch.</p>
+                <p class="tags">HTML | CSS | JS | API</p>
+                <a href="#" class="project-btn">Live Demo</a>
+            </div>
+            <div class="card m-2">
+                <img src="https://via.placeholder.com/300x200" alt="Portfolio" />
+                <h3>Personal Portfolio</h3>
+                <p>Clean responsive portfolio to showcase my web dev skills.</p>
+                <p class="tags">HTML | CSS | JS</p>
+                <a href="#" class="project-btn">Live Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="p-5 bg-light">
+        <div class="container text-center">
+            <h2>Contact Me</h2>
+            <p>Email: karanrathour1811@gmail.com</p>
+            <p>Phone: +91 7452916102</p>
+            <form action="https://formspree.io/f/xqalykbl" method="POST" class="mx-auto" style="max-width:400px;">
+                <div class="mb-3">
+                    <input name="name" required type="text" class="form-control" placeholder="Your name" />
+                </div>
+                <div class="mb-3">
+                    <input name="email" required type="email" class="form-control" placeholder="Your email" />
+                </div>
+                <div class="mb-3">
+                    <textarea name="message" required class="form-control" rows="3"
+                        placeholder="Write your message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+            <div id="successMessage"></div>
+        </div>
+    </section>
+
+    <footer class="text-center my-4">
+        <p>© 2025 Karan.dev | All Rights Reserved</p>
         <div>
-          <h1>Elegant Bangles</h1>
-          <div style="font-size:12px; color:var(--muted)">Handcrafted · Timeless</div>
+            <a href="https://www.instagram.com/rathour_karaan/" target="_blank" class="text-danger mx-2 fs-3"><i
+                    class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/917452916102" target="_blank" class="text-success mx-2 fs-3"><i
+                    class="fab fa-whatsapp"></i></a>
+            <a href="https://github.com/dashboard" target="_blank" class="text-light mx-2 fs-3"><i
+                    class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/karan-rathour-265128315/" target="_blank"
+                class="text-primary mx-2 fs-3"><i class="fab fa-linkedin"></i></a>
         </div>
-      </div>
+    </footer>
 
-      <nav class="menu" aria-label="Primary">
-        <div class="hamburger">
-          <button class="hamb-btn" id="hambBtn" aria-label="Menu">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-        </div>
-
-        <div class="mobile-nav" id="mobileNav">
-          <a href="#home">Home</a>
-          <div class="dropdown">
-            <a href="#" class="dropdown-toggle">Bangles <i class="fa-solid fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-              <a href="#products" data-filter="gold">Golden Bangles</a>
-              <a href="#products" data-filter="silver">Silver Bangles</a>
-            </div>
-          </div>
-          <a href="#collections">Collections</a>
-          <a href="#about">About</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div class="menu-links" style="display:none">
-          <div class="dropdown" style="display:inline-block">
-            <a class="dropdown-toggle" href="#">Bangles <i class="fa-solid fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-              <a href="#products" data-filter="gold">Golden Bangles</a>
-              <a href="#products" data-filter="silver">Silver Bangles</a>
-            </div>
-          </div>
-          <a href="#collections">Collections</a>
-          <a href="#about">About</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div class="icons" style="display:none">
-          <button class="icon-btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-          <button class="icon-btn" title="Cart"><i class="fa-solid fa-bag-shopping"></i></button>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <!-- HERO -->
-    <section id="home" class="hero">
-      <div class="hero-inner">
-        <div class="hero-card">
-          <h2>Handcrafted bangles — Jo har pal shine kare</h2>
-          <p>Premium quality golden & silver bangles, handcrafted by skilled artisans. Light-weight, long-lasting finish, perfect for daily wear or special occasions.</p>
-          <div class="cta">
-            <a href="#products" class="btn btn-primary"><i class="fa-solid fa-shop"></i> Shop Now</a>
-            <a href="#collections" class="btn btn-outline">Explore Collections</a>
-          </div>
-          <div class="perks">
-            <div class="perk">
-              <i class="fa-solid fa-truck-fast" style="font-size:20px;"></i>
-              <h4>Fast Shipping</h4>
-              <div style="font-size:13px; color:var(--muted)">All-India delivery</div>
-            </div>
-            <div class="perk">
-              <i class="fa-solid fa-certificate" style="font-size:20px;"></i>
-              <h4>Quality Assured</h4>
-              <div style="font-size:13px; color:var(--muted)">Premium materials</div>
-            </div>
-            <div class="perk">
-              <i class="fa-solid fa-hand-holding-heart" style="font-size:20px;"></i>
-              <h4>Custom Orders</h4>
-              <div style="font-size:13px; color:var(--muted)">Personalize size & finish</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.06)">
-          <img src="https://via.placeholder.com/600x500.png?text=Elegant+Bangles" alt="hero image">
-        </div>
-      </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section id="products" class="products">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap">
-        <h3 style="margin:0; font-size:var(--fs-xl)">Popular Bangles</h3>
-        <div class="filters">
-          <button onclick="filterProducts('all')">All</button>
-          <button onclick="filterProducts('gold')">Golden</button>
-          <button onclick="filterProducts('silver')">Silver</button>
-        </div>
-      </div>
-
-      <div class="grid" id="productGrid">
-        <!-- Product card (repeat) -->
-        <article class="card" data-category="gold">
-          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Golden+Bangle+1" alt="Golden Bangle 1"></div>
-          <div class="content">
-            <h4>Radiant Golden Bangle</h4>
-            <div style="font-size:13px; color:var(--muted)">Polished finish • Lightweight</div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
-              <div class="price">₹1,299</div>
-              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-category="silver">
-          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Silver+Bangle+1" alt="Silver Bangle 1"></div>
-          <div class="content">
-            <h4>Classic Silver Bangle</h4>
-            <div style="font-size:13px; color:var(--muted)">Oxidized look • Durable</div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
-              <div class="price">₹899</div>
-              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-category="gold">
-          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Golden+Bangle+2" alt="Golden Bangle 2"></div>
-          <div class="content">
-            <h4>Intricate Golden Set</h4>
-            <div style="font-size:13px; color:var(--muted)">Hand-etched patterns</div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
-              <div class="price">₹2,499</div>
-              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-category="silver">
-          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Silver+Bangle+2" alt="Silver Bangle 2"></div>
-          <div class="content">
-            <h4>Modern Silver Loop</h4>
-            <div style="font-size:13px; color:var(--muted)">Minimal & chic</div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
-              <div class="price">₹1,099</div>
-              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Add more cards to make page long -->
-        <article class="card" data-category="gold">
-          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Golden+Bangle+3" alt="Golden Bangle 3"></div>
-          <div class="content">
-            <h4>Delicate Gold Cuff</h4>
-            <div style="font-size:13px; color:var(--muted)">Comfort fit</div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
-              <div class="price">₹1,599</div>
-              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-category="silver">
-          <div class="img-wrap"><img src="https://via.placeholder.com/600x600.png?text=Silver+Bangle+3" alt="Silver Bangle 3"></div>
-          <div class="content">
-            <h4>Layered Silver Set</h4>
-            <div style="font-size:13px; color:var(--muted)">Stack-friendly</div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem">
-              <div class="price">₹1,399</div>
-              <button class="btn btn-outline" onclick="quickView(this)">Quick View</button>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Gallery and more content to make page long -->
-      <h3 style="margin-top:1.2rem; font-size:var(--fs-xl)">Gallery</h3>
-      <div class="gallery">
-        <img src="https://via.placeholder.com/600x400.png?text=Gallery+1" alt="g1">
-        <img src="https://via.placeholder.com/600x400.png?text=Gallery+2" alt="g2">
-        <img src="https://via.placeholder.com/600x400.png?text=Gallery+3" alt="g3">
-        <img src="https://via.placeholder.com/600x400.png?text=Gallery+4" alt="g4">
-        <img src="https://via.placeholder.com/600x400.png?text=Gallery+5" alt="g5">
-        <img src="https://via.placeholder.com/600x400.png?text=Gallery+6" alt="g6">
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" style="margin-top:1.4rem">
-      <h3 style="font-size:var(--fs-xl)">About Elegant Bangles</h3>
-      <div style="display:grid; gap:0.8rem; margin-top:0.6rem">
-        <p style="color:var(--muted)">Elegant Bangles ka mission hai handcrafted, quality bangles ko har ghar tak pahunchana. Hum artisans ke saath milke sustainable material use karte hain aur har piece ka detailed finishing karte hain.</p>
-        <div style="display:flex; gap:0.8rem; flex-wrap:wrap">
-          <div style="flex:1; min-width:220px; background:var(--card-bg); padding:0.9rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.04)">
-            <h4>Our Craft</h4>
-            <p style="margin:0; color:var(--muted); font-size:14px">Traditional techniques + modern finishing.</p>
-          </div>
-          <div style="flex:1; min-width:220px; background:var(--card-bg); padding:0.9rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.04)">
-            <h4>Sizing & Fit</h4>
-            <p style="margin:0; color:var(--muted); font-size:14px">Custom sizing available for perfect fit.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" style="margin-top:1.4rem">
-      <h3 style="font-size:var(--fs-xl)">Customer Love</h3>
-      <div style="display:flex; gap:0.8rem; margin-top:0.6rem; overflow:hidden" id="testiWrap">
-        <div class="testi" style="min-width:280px">
-          <strong>Priya</strong>
-          <p style="margin:0.4rem 0 0; color:var(--muted)">"Bangles bahut hi light aur beautiful aaye. Delivery fast thi."</p>
-        </div>
-        <div class="testi" style="min-width:280px">
-          <strong>Asha</strong>
-          <p style="margin:0.4rem 0 0; color:var(--muted)">"Custom order perfect fit me aaya, quality zabardast."</p>
-        </div>
-        <div class="testi" style="min-width:280px">
-          <strong>Karan</strong>
-          <p style="margin:0.4rem 0 0; color:var(--muted)">"Packaging secure tha aur finish premium laga."</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- BLOG -->
-    <section id="blog" style="margin-top:1.4rem">
-      <h3 style="font-size:var(--fs-xl)">From the blog</h3>
-      <div class="blog-grid" style="margin-top:0.6rem">
-        <article style="background:var(--card-bg); padding:0.9rem; border-radius:10px">
-          <h4>How to care for your bangles</h4>
-          <p style="color:var(--muted); font-size:13px">Simple tips to keep shine for years.</p>
-        </article>
-        <article style="background:var(--card-bg); padding:0.9rem; border-radius:10px">
-          <h4>Choosing the right fit</h4>
-          <p style="color:var(--muted); font-size:13px">Measure properly for comfort.</p>
-        </article>
-        <article style="background:var(--card-bg); padding:0.9rem; border-radius:10px">
-          <h4>Mix & match styles</h4>
-          <p style="color:var(--muted); font-size:13px">Pair bangles with modern outfits.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- NEWSLETTER & CONTACT -->
-    <section id="contact" style="margin-top:1.4rem; margin-bottom:1.6rem">
-      <h3 style="font-size:var(--fs-xl)">Contact & Newsletter</h3>
-      <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:0.6rem">
-        <div style="flex:1; min-width:260px; background:var(--card-bg); padding:1rem; border-radius:12px">
-          <h4>Join Newsletter</h4>
-          <p style="color:var(--muted); margin-top:0.4rem">Get offers & new arrivals</p>
-          <div class="newsletter" style="margin-top:0.6rem">
-            <input type="email" id="newsEmail" placeholder="Email address">
-            <button class="btn btn-primary" onclick="subscribe()">Subscribe</button>
-          </div>
-        </div>
-
-        <div style="flex:1; min-width:260px; background:var(--card-bg); padding:1rem; border-radius:12px">
-          <h4>Message Us</h4>
-          <form id="contactForm" onsubmit="handleContact(event)">
-            <div style="display:flex; gap:0.6rem; flex-wrap:wrap">
-              <input type="text" id="name" placeholder="Name" style="flex:1; padding:0.6rem; border-radius:8px; border:1px solid rgba(0,0,0,0.06)">
-              <input type="email" id="email" placeholder="Email" style="flex:1; padding:0.6rem; border-radius:8px; border:1px solid rgba(0,0,0,0.06)">
-            </div>
-            <textarea id="message" rows="4" placeholder="Message" style="width:100%; margin-top:0.6rem; padding:0.6rem; border-radius:8px; border:1px solid rgba(0,0,0,0.06)"></textarea>
-            <div style="margin-top:0.6rem"><button class="btn btn-primary" type="submit">Send Message</button></div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="container">
-    <div style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:center">
-      <div>
-        <strong>Elegant Bangles</strong>
-        <div style="font-size:13px; color:var(--muted)">© 2025 Elegant Bangles</div>
-      </div>
-      <div style="display:flex; gap:0.6rem; align-items:center">
-        <a href="#" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" aria-label="facebook"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#" aria-label="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Quick scripts -->
-  <script>
-    // Mobile menu toggle
-    const hambBtn = document.getElementById('hambBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    hambBtn && hambBtn.addEventListener('click', () => {
-      if(mobileNav.style.display === 'block') mobileNav.style.display = 'none';
-      else mobileNav.style.display = 'block';
-    });
-
-    // Product filter
-    function filterProducts(cat){
-      const cards = document.querySelectorAll('#productGrid .card');
-      cards.forEach(c => {
-        if(cat === 'all') c.style.display = '';
-        else c.style.display = (c.dataset.category === cat) ? '' : 'none';
-      })
-      // scroll to products
-      document.getElementById('productGrid') && document.getElementById('productGrid').scrollIntoView({behavior:'smooth'});
-    }
-
-    // Dropdown links (mobile) -> use data-filter attribute
-    document.querySelectorAll('[data-filter]').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        const f = el.getAttribute('data-filter');
-        filterProducts(f);
-      })
-    })
-
-    // Quick view placeholder
-    function quickView(btn){
-      const card = btn.closest('.card');
-      const title = card.querySelector('h4').innerText;
-      alert('Quick view: ' + title + '
-(Replace with modal in production)');
-    }
-
-    // Simple testimonial auto-scroll
-    (function autoScrollTestimonials(){
-      const wrap = document.getElementById('testiWrap');
-      if(!wrap) return;
-      let x = 0;
-      setInterval(()=>{
-        x += 280;
-        if(x > wrap.scrollWidth - wrap.clientWidth) x = 0;
-        wrap.scrollTo({left:x, behavior:'smooth'});
-      }, 3500);
-    })();
-
-    // Newsletter subscribe
-    function subscribe(){
-      const em = document.getElementById('newsEmail').value;
-      if(!em || !em.includes('@')) return alert('Please enter a valid email');
-      alert('Subscribed with ' + em + '
-(Integrate with backend to store)');
-      document.getElementById('newsEmail').value = '';
-    }
-
-    // Contact form (demo)
-    function handleContact(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const msg = document.getElementById('message').value.trim();
-      if(!name || !email || !msg) return alert('Please fill all fields');
-      alert('Thanks ' + name + '! Message received. (Hook this to your backend)');
-      document.getElementById('contactForm').reset();
-    }
-
-    // Small accessibility: close mobile menu on resize to large screens
-    window.addEventListener('resize', () => {
-      if(window.innerWidth >= 768){
-        mobileNav.style.display = 'none';
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    const btn = document.getElementById('viewButton');
+    const img = document.getElementById('certificateImage');
+    btn.onclick = function() {
+      // Toggle image display on each click
+      if (img.style.display === 'none') {
+        img.style.display = 'block';
+        btn.textContent = ': Hide Certificate';
+      } else {
+        img.style.display = 'none';
+        btn.textContent = ': View Certificate';
       }
-    })
-  </script>
+    }
+      </script>
 </body>
-</html>
 
+</html>
