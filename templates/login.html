@@ -2,219 +2,143 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="{{ url_for('static', filename='banglescript.js') }}"></script>
-    <style>
-        /* General Reset */
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background: linear-gradient(120deg, #f8fafc, #fbeff7 85%);
-            font-family: 'Segoe UI', Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        /* Container */
-        .login-container {
-            width: 400px;
-            max-width: 95vw;
-            background: #fff;
-            border-radius: 16px;
-            padding: 40px 30px;
-            box-shadow: 0 8px 48px 0 rgba(60, 72, 104, 0.15);
-            text-align: center;
-            position: relative;
-        }
+  <style>
+    body {
+      background: linear-gradient(120deg, #f8fafc, #fbeff7 85%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        /* Background illustration */
-        .bangles-bg {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            width: 120px;
-            opacity: 0.12;
-            pointer-events: none;
-        }
+    .card {
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
 
-        /* Headings */
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #36395a;
-        }
+    .card-header {
+      background: #0ea5e9;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem;
+    }
 
-        p {
-            font-size: 1rem;
-            color: #888;
-            margin-bottom: 25px;
-        }
+    .card-header h3 {
+      margin: 0;
+      font-weight: 700;
+    }
 
-        /* Input group */
-        .input-group {
-            margin-bottom: 18px;
-            text-align: left;
-            position: relative;
-        }
+    .form-control:focus {
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 0.2rem rgba(14, 165, 233, 0.25);
+    }
 
-        .input-group label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 6px;
-        }
+    .btn-primary {
+      background: #0ea5e9;
+      border: none;
+    }
 
-        .input-group input {
-            width: 100%;
-            padding: 11px 15px;
-            border-radius: 7px;
-            border: 1.5px solid #d3d3d3;
-            background: #f8f8fa;
-            font-size: 1rem;
-        }
+    .btn-primary:hover {
+      background: #0f4b6d;
+    }
 
-        .input-group i {
-            position: absolute;
-            right: 3%;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
+    .google-btn {
+      background: #fff;
+      border: 1.5px solid #d3d3d3;
+      font-weight: 500;
+      transition: 0.3s;
+    }
 
-        /* Form utilities */
-        .form-util {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
+    .google-btn:hover {
+      background: #f1f1f1;
+      border-color: #b1b1b1;
+    }
 
-        .form-util a {
-            color: #ea5555;
-            text-decoration: none;
-        }
+    .google-btn img {
+      width: 20px;
+      height: 20px;
+    }
 
-        .form-util a:hover {
-            text-decoration: underline;
-        }
+    .signup-link {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
 
-        /* Buttons */
-        .sign-in-btn, .google-btn {
-            width: 100%;
-            padding: 12px;
-            border-radius: 7px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 12px;
-        }
+    .signup-link a {
+      color: #ea5555;
+      text-decoration: none;
+    }
 
-        .sign-in-btn {
-            background: #0ea5e9;
-            color: #fff;
-            border: none;
-        }
-
-        .sign-in-btn:hover {
-            background: #0f4b6d;
-        }
-
-        .google-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border: 1.5px solid #d3d3d3;
-            background: #fff;
-        }
-
-        .google-btn img {
-            width: 20px;
-            height: 20px;
-        }
-
-        .google-btn:hover {
-            background: #f1f1f1;
-            border-color: #b1b1b1;
-        }
-
-        /* Signup link */
-        .signup-link {
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-        .signup-link a {
-            color: #ea5555;
-            text-decoration: none;
-        }
-
-        .signup-link a:hover {
-            text-decoration: underline;
-        }
-
-        /* ----- MOBILE RESPONSIVE ----- */
-        @media (max-width: 768px) {
-            .login-container {
-                padding: 30px 5vw;
-            }
-            h2 { font-size: 1.6rem; }
-            p { font-size: 0.95rem; }
-            .sign-in-btn, .google-btn { padding: 10px; font-size: 1rem; }
-        }
-
-        @media (max-width: 480px) {
-            .login-container {
-                padding: 20px 4vw;
-            }
-            h2 { font-size: 1.4rem; }
-            p { font-size: 0.9rem; }
-            .input-group input { padding: 9px 12px; font-size: 0.95rem; }
-            .sign-in-btn, .google-btn { font-size: 0.9rem; padding: 9px; }
-            .bangles-bg { width: 80px; bottom: -15px; right: -15px; }
-        }
-    </style>
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="login-container">
-        <img class="bangles-bg"
-            src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/d3213285-bd5e-47e9-a316-57ea8679ab8a.png"
-            alt="Bangles Illustration">
-        <h2>WELCOME BACK</h2>
-        <p>Welcome back! Please enter your details.</p>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+        <div class="card">
+          <div class="card-header">
+            <h3>Welcome Back</h3>
+            <p class="mb-0">Please enter your details</p>
+          </div>
+          <div class="card-body p-4">
+            <form id="loginform">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email"
+                  placeholder="Enter your email" required>
+              </div>
 
-        <form id="loginform">
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Enter your email" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="********">
-                <i id="eyebtn" class="fa-solid fa-eye-slash" onclick="togglePassword()"></i>
-            </div>
-            <div class="form-util">
-                <label><input type="checkbox"> Remember me</label>
-                <a href="{{ url_for('Forgot_pass') }}">Forgot password</a>
-            </div>
+              <div class="mb-3 position-relative">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password"
+                  placeholder="********">
+                <i id="eyebtn" class="fa-solid fa-eye-slash position-absolute"
+                  style="top: 65%; right: 15px; cursor: pointer;"
+                  onclick="togglePassword()"></i>
+              </div>
 
-            <button class="sign-in-btn" type="submit" onclick="checklogin()">Sign in</button>
-            <button class="google-btn" type="button">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="remember">
+                  <label for="remember" class="form-check-label">Remember me</label>
+                </div>
+                <a href="{{ url_for('Forgot_pass') }}" class="text-decoration-none text-danger">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100 mb-3" onclick="checklogin()">Sign In</button>
+
+              <button type="button"
+                class="btn google-btn w-100 d-flex align-items-center justify-content-center gap-2 mb-3">
                 <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
                 Sign in with Google
-            </button>
-        </form>
+              </button>
+            </form>
 
-        <div class="signup-link">
-            Don't have an account? <a href="{{ url_for('signup') }}">Sign up for free</a>
+            <div class="signup-link">
+              Don't have an account?
+              <a href="{{ url_for('signup') }}">Sign up for free</a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
