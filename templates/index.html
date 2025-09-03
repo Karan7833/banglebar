@@ -2,323 +2,307 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BangleBar</title>
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='bblogo.png') }}">
+    <meta charset="UTF-8">
+    <title>BangleBar</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='bblogo.png') }}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style> 
-    /* Default (mobile-first): images full width */
-.carousel-item img {
-  height: 50%;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-.image-container {
-  width: 100%;
-  height: 200px;       /* sab images same height ke honge */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.image-container img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-}
+    <!-- Bootstrap JS (Bundle with Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-/* PC / Laptop screens (992px se upar) */
-@media (min-width: 992px) {
-  .carousel-item img {
-    max-width: 70%;   /* image chhoti hogi */
-    margin: 0 auto;   /* center me aayegi */
-    border-radius: 15px; /* thoda style ke liye */
-  }
-}
-.product-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='banglestyle.css') }}">
 
-
-  </style>
-  <!-- Custom CSS -->
-  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='banglestyle.css') }}"> -->
 </head>
 
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-light shadow-sm sticky-top">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
-        <img src="{{ url_for('static', filename='bblogo.png') }}" alt="Bangle Bar Logo" height="40" class="me-2">
-        <strong>BangleBar</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <span class="sitename ">
+                    <img src="{{ url_for('static', filename='bblogo.png') }}" alt="Bangle Bar Logo"
+                        style="height:40px; width:auto;">
+                </span>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{url_for('login')}}"><i
-                class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{url_for('cart')}}"><i
-                class="fa fa-shopping-cart"></i> Cart</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Collection</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Bangles</a></li>
-              <li><a class="dropdown-item" href="#">Jewellery</a></li>
-              <li><a class="dropdown-item" href="#">Occasion</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('coustumer_care') }}"><i
-                class="fa-solid fa-headset"></i> Customer Care</a></li>
-        </ul>
-        <form class="d-flex ms-lg-3 mt-2 mt-lg-0">
-          <input class="form-control me-2" type="search" placeholder="Search products...">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item login-icon">
+                        <a class="nav-link" href="{{url_for('login')}}">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{url_for('cart')}}">
+                            <i id="addcart" class="fa fa-shopping-cart"> Cart</i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Collection
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Bangles</a></li>
+                            <li><a class="dropdown-item" href="#">Jewellery</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Occasion</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('coustumer_care') }}" tabindex="-1" aria-disabled="true"><i
+                                class="fa-solid fa-headset"></i> Customer Care</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search"
+                        placeholder="Search for bangles, jewelry, products..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+   
+
+    <!-- Hero Section - Carousel -->
+    <div class="hero-section">
+        <div class="carousel">
+            <button class="carousel-btn left">&#8592;</button>
+            <img src="static/bangledisp0.png" class="active" alt="Bangles Collection">
+            <img src="static/bangledisp1.png" alt="Beautiful Bangles">
+            <img src="static/bangledisp2.png" alt="Festive Jewelry">
+            <button class="carousel-btn right">&#8594;</button>
+        </div>
     </div>
-  </nav>
-
-  <!-- Hero Carousel -->
-  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{{ url_for('static', filename='bangledisp0.png') }}" class="d-block w-100" alt="Bangles">
-      </div>
-      <div class="carousel-item">
-        <img src="{{ url_for('static', filename='bangledisp1.png') }}" class="d-block w-100" alt="Bangles">
-      </div>
-      <div class="carousel-item">
-        <img src="{{ url_for('static', filename='bangledisp2.png') }}" class="d-block w-100" alt="Bangles">
-      </div>
+    <div class="feature-bar" role="region" aria-label="Shopping highlights">
+        <div class="features"> <!-- Return / Exchange -->
+            <div class="item" aria-label="7 Days Easy Return"> <span class="icon" aria-hidden="true">
+                    <!-- looped arrow (return) --> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12l3-3m0 0l3 3m-3-3v5a6 6 0 106 6h5" />
+                    </svg> </span>
+                <div>
+                    <div class="label">7 Days Easy Return</div>
+                    <div class="sublabel">Hassle‑free pickup & quick refunds</div>
+                </div> <span class="shine"></span>
+            </div> <!-- Cash on Delivery -->
+            <div class="item" aria-label="Cash on Delivery"> <span class="icon" aria-hidden="true"> <!-- rupee coin -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M9 8h6M9 11h5c-1.5 2-3.8 3-6 3"></path>
+                    </svg> </span>
+                <div>
+                    <div class="label">Cash on Delivery <span class="badge">COD</span></div>
+                    <div class="sublabel">Pay when it arrives at your door</div>
+                </div> <span class="shine"></span>
+            </div> <!-- Bangle Icon (Category) -->
+            <div class="item" aria-label="Premium Bangles"> <span class="icon" aria-hidden="true">
+                    <!-- stylized bangle pair --> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <ellipse cx="9" cy="12" rx="5.5" ry="3.5"></ellipse>
+                        <ellipse cx="15" cy="12" rx="5.5" ry="3.5"></ellipse>
+                    </svg> </span>
+                <div>
+                    <div class="label">Premium Bangles</div>
+                    <div class="sublabel">Nickel‑free • Skin‑safe • Lightweight</div>
+                </div> <span class="shine"></span>
+            </div> <!-- Fancy Design / Craft -->
+            <div class="item" aria-label="Fancy Designer Styles"> <span class="icon" aria-hidden="true">
+                    <!-- sparkle star --> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z" />
+                    </svg> </span>
+                <div>
+                    <div class="label">Fancy Designer Styles</div>
+                    <div class="sublabel">New drops every week</div>
+                </div> <span class="shine"></span>
+            </div>
+        </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
 
-  <!-- Features Section -->
-  <section class="py-4 bg-light text-center">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-6 col-md-3">
-          <i class="fa fa-undo fa-2x mb-2"></i>
-          <h6>7 Days Easy Return</h6>
-          <small>Quick refunds, hassle-free</small>
+    <!-- Products Grid -->
+    <div class="products-section">
+        <div class="products-heading">Shop Popular Products</div>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="static/bangle4.png" alt="speard Bangles">
+                <div class="prod-title">Traditional Gold Bangles</div>
+                <div class="prod-price">₹1,599</div>
+                <button class="buy-btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="static/bangle3.png" alt="Silver Bangles">
+                <div class="prod-title">Elegant Silver Bangles</div>
+                <div class="prod-price">₹849</div>
+                <button class="buy-btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="static/bangle2.png" alt="Colorful Set">
+                <div class="prod-title">Colorful Bangles Set</div>
+                <div class="prod-price">₹499</div>
+                <button class="buy-btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="static/bangle5.png" alt="Bridal Kangan Set">
+                <div class="prod-title">Bridal Kangan Set</div>
+                <div class="prod-price">₹2,199</div>
+                <button class="buy-btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="static/ring1.png" alt="Bridal Kangan Set">
+                <div class="prod-title">Diamond Whisper Ring</div>
+                <div class="prod-price">₹199</div>
+                <button class="buy-btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="static/ring2.png" alt="Bridal Kangan Set">
+                <div class="prod-title">Diamond Whisper Ring</div>
+                <div class="prod-price">₹249</div>
+                <button class="buy-btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="static/ring3.png" alt="Bridal Kangan Set">
+                <div class="prod-title">The Imperial Charm Ring</div>
+                <div class="prod-price">₹399</div>
+                <button class="buy-btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="static/ring5.png" alt="Bridal Kangan Set">
+                <div class="prod-title">Celestial Crown Ring</div>
+                <div class="prod-price">₹559</div>
+                <button class="buy-btn">Add to Cart</button>
+            </div>
+            <!-- More products add karein as needed -->
         </div>
-        <div class="col-6 col-md-3">
-          <i class="fa fa-money-bill fa-2x mb-2"></i>
-          <h6>Cash on Delivery</h6>
-          <small>Pay at your door</small>
+        <div class="video-hero">
+            <video src="{{ url_for('static', filename='bangles1234.mp4') }}" controls autoplay loop muted
+                width="100%"></video>
+
         </div>
-        <div class="col-6 col-md-3">
-          <i class="fa fa-gem fa-2x mb-2"></i>
-          <h6>Premium Bangles</h6>
-          <small>Skin-safe, lightweight</small>
-        </div>
-        <div class="col-6 col-md-3">
-          <i class="fa fa-star fa-2x mb-2"></i>
-          <h6>Designer Styles</h6>
-          <small>New drops every week</small>
-        </div>
-      </div>
+
     </div>
-  </section>
 
-  <!-- Products Section -->
-<section class="py-5">
-  <div class="container">
-    <h2 class="mb-4 text-center">✨ Shop Popular Products</h2>
-    <div class="row g-4">
+    <!-- ===== Footer v2: Minimal Luxe (Light) ===== -->
+    <footer class="bb-footer" role="contentinfo" aria-label="BangleBar footer">
+        <div class="bbf-wrap">
+            <!-- Column: Brand -->
+            <section class="bbf-col bbf-brand">
+                <div class="bbf-logo">
+                    <img src="{{ url_for('static', filename='bblogo.png') }}" alt="BangleBar" height="48" width="48">
+                    <span>BangleBar</span>
+                </div>
+                <p class="bbf-copy">
+                    Elegant bangles & jewelry for everyday luxury. Skin-safe • Lightweight • Nickel-free.
+                </p>
+                <div class="bbf-badges" aria-label="highlights">
+                    <span class="bb-chip">7-Day Return</span>
+                    <span class="bb-chip">Free Shipping*</span>
+                    <span class="bb-chip">COD Available</span>
+                </div>
+            </section>
 
-      <!-- Product Card -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="card shadow-sm h-100">
-          <div class="image-container">
-            <img src="{{ url_for('static', filename='neckles1.png') }}" class="card-img-top" alt="Gold Bangles">
-          </div>
-          <div class="card-body text-center">
-            <h6 class="card-title">Enamel Fold heart neckles</h6>
-            <p class="text-success fw-bold">1.₹1,999</p>
-            <button class="btn btn-dark w-100">Add to Cart</button>
-          </div>
-        </div>
-      </div>
+            <!-- Column: Shop -->
+            <section class="bbf-col">
+                <h4 class="bbf-title">Shop</h4>
+                <ul class="bbf-links">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Premium Collection</a></li>
+                    <li><a href="{{ url_for('cart') }}">Cart</a></li>
+                </ul>
+            </section>
 
-      <!-- Example 2 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="card shadow-sm h-100">
-          <div class="image-container">
-            <img src="{{ url_for('static', filename='bangle3.png') }}" class="card-img-top" alt="Gold Bangles">
-          </div>
-          <div class="card-body text-center">
-            <h6 class="card-title">Meenakari Bangles</h6>
-            <p class="text-success fw-bold">2.₹1,199</p>
-            <button class="btn btn-dark w-100">Add to Cart</button>
-          </div>
-        </div>
-      </div>
+            <!-- Column: Help -->
+            <section class="bbf-col">
+                <h4 class="bbf-title">Help</h4>
+                <ul class="bbf-links">
+                    <li><a href="{{ url_for('coustumer_care') }}">Customer Care</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                </ul>
+            </section>
 
-         <div class="col-6 col-md-4 col-lg-3">
-        <div class="card shadow-sm h-100">
-          <div class="image-container">
-            <img src="{{ url_for('static', filename='bangle4.png') }}" class="card-img-top" alt="Gold Bangles">
-          </div>
-          <div class="card-body text-center">
-            <h6 class="card-title">Pearl Bangles</h6>
-            <p class="text-success fw-bold">3.₹799</p>
-            <button class="btn btn-dark w-100">Add to Cart</button>
-          </div>
-        </div>
-      </div>
+            <!-- Column: Stay in touch -->
+            <section class="bbf-col">
+                <h4 class="bbf-title">Stay in touch</h4>
+                <form class="bbf-newsletter" onsubmit="return bbSubscribe(event)">
+                    <label for="bb-email" class="sr-only">Email address</label>
+                    <input id="bb-email" type="email" placeholder="Enter your email" required>
+                    <button type="submit" aria-label="Subscribe">Subscribe</button>
+                </form>
 
-         <div class="col-6 col-md-4 col-lg-3">
-        <div class="card shadow-sm h-100">
-          <div class="image-container">
-            <img src="{{ url_for('static', filename='bangle5.png') }}" class="card-img-top" alt="Gold Bangles">
-          </div>
-          <div class="card-body text-center">
-            <h6 class="card-title">Antique Rajwadi Kada Set</h6>
-            <p class="text-success fw-bold">4.₹1,799</p>
-            <button class="btn btn-dark w-100">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-         <div class="col-6 col-md-4 col-lg-3">
-        <div class="card shadow-sm h-100">
-          <div class="image-container">
-            <img src="{{ url_for('static', filename='ring1.png') }}" class="card-img-top" alt="Gold Bangles">
-          </div>
-          <div class="card-body text-center">
-            <h6 class="card-title">Eternal Love Diamond Ring</h6>
-            <p class="text-success fw-bold">5.₹</p>
-            <button class="btn btn-dark w-100">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-         <div class="col-6 col-md-4 col-lg-3">
-        <div class="card shadow-sm h-100">
-          <div class="image-container">
-            <img src="{{ url_for('static', filename='ring2.png') }}" class="card-img-top" alt="Gold Bangles">
-          </div>
-          <div class="card-body text-center">
-            <h6 class="card-title">Royal Emerald Halo Ring</h6>
-            <p class="text-success fw-bold">6.₹2,299</p>
-            <button class="btn btn-dark w-100">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-         <div class="col-6 col-md-4 col-lg-3">
-        <div class="card shadow-sm h-100">
-          <div class="image-container">
-            <img src="{{ url_for('static', filename='ring3.png') }}" class="card-img-top" alt="Gold Bangles">
-          </div>
-          <div class="card-body text-center">
-            <h6 class="card-title">Sapphire Crown Princess Ring</h6>
-            <p class="text-success fw-bold">7.₹2,299</p>
-            <button class="btn btn-dark w-100">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-         <div class="col-6 col-md-4 col-lg-3">
-        <div class="card shadow-sm h-100">
-          <div class="image-container">
-            <img src="{{ url_for('static', filename='ring5.png') }}" class="card-img-top" alt="Gold Bangles">
-          </div>
-          <div class="card-body text-center">
-            <h6 class="card-title">Elegant Bangles</h6>
-            <p class="text-success fw-bold">8.₹2,299</p>
-            <button class="btn btn-dark w-100">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      
+                <div class="bbf-social" aria-label="social">
+                    <a aria-label="Instagram" href="#"><i class="fab fa-instagram"></i></a>
+                    <a aria-label="Facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a aria-label="X" href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a aria-label="YouTube" href="#"><i class="fab fa-youtube"></i></a>
+                </div>
 
-      <!-- Aur bhi cards isi format me -->
-      
-    </div>
-  </div>
-</section>
+                <div class="bbf-meta">
+                    <div class="bbf-selects">
+                        <select aria-label="Language">
+                            <option selected>English</option>
+                            <option>हिंदी</option>
+                        </select>
+                        <select aria-label="Currency">
+                            <option selected>INR (₹)</option>
+                        </select>
+                    </div>
+                    <div class="bbf-pay">
+                        <span class="pay-pill">UPI</span>
+                        <span class="pay-pill">RuPay</span>
+                        <span class="pay-pill">Visa</span>
+                        <span class="pay-pill">Mastercard</span>
+                        <span class="pay-pill">COD</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="bbf-bottom">
+            <p>© <span id="bb-year"></span> BangleBar • <a href="#">Privacy</a> • <a href="#">Terms</a> • <a
+                    href="#">Sitemap</a></p>
+            <button class="bb-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top">
+                <i class="fa fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
 
 
-  <!-- Video Section -->
-  <div class="container mb-5">
-    <video src="{{ url_for('static', filename='bangles1234.mp4') }}" controls autoplay loop muted class="w-100 rounded">
-    </video>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-light pt-5">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-3">
-          <h5>BangleBar</h5>
-          <p>Elegant bangles & jewelry for everyday luxury. Skin-safe • Lightweight • Nickel-free.</p>
-        </div>
-        <div class="col-md-3">
-          <h5>Shop</h5>
-          <ul class="list-unstyled">
-            <li><a href="{{ url_for('home') }}" class="text-light text-decoration-none">Home</a></li>
-            <li><a href="#" class="text-light text-decoration-none">New Arrivals</a></li>
-            <li><a href="#" class="text-light text-decoration-none">Premium Collection</a></li>
-            <li><a href="{{ url_for('cart') }}" class="text-light text-decoration-none">Cart</a></li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <h5>Help</h5>
-          <ul class="list-unstyled">
-            <li><a href="{{ url_for('coustumer_care') }}" class="text-light text-decoration-none">Customer Care</a></li>
-            <li><a href="#" class="text-light text-decoration-none">Shipping & Returns</a></li>
-            <li><a href="#" class="text-light text-decoration-none">Warranty</a></li>
-            <li><a href="{{ url_for('login') }}" class="text-light text-decoration-none">Login</a></li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <h5>Stay in Touch</h5>
-          <form class="d-flex mb-3">
-            <input type="email" class="form-control me-2" placeholder="Email" required>
-            <button class="btn btn-success">Subscribe</button>
-          </form>
-          <div class="d-flex gap-3">
-            <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-light"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="text-light"><i class="fab fa-x-twitter"></i></a>
-            <a href="#" class="text-light"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-4 border-top pt-3">
-        <p class="mb-0">© <span id="year"></span> BangleBar • Privacy • Terms • Sitemap</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.getElementById("year").innerText = new Date().getFullYear();
-  </script>
-  
+    <!-- Carousel JS -->
+    <script>
+        const images = document.querySelectorAll(".carousel img");
+        let current = 0;
+        function showImage(idx) {
+            images.forEach((img, i) => img.classList.toggle('active', i === idx));
+        }
+        function nextImage() {
+            current = (current + 1) % images.length;
+            showImage(current);
+        }
+        function prevImage() {
+            current = (current - 1 + images.length) % images.length;
+            showImage(current);
+        }
+        document.querySelector(".carousel-btn.right").onclick = nextImage;
+        document.querySelector(".carousel-btn.left").onclick = prevImage;
+        setInterval(nextImage, 3200);
+    </script>
+    <script src="{{ url_for('static', filename='banglescript.js') }}"></script>
 </body>
 
 </html>
