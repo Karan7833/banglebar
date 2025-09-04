@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+      <link rel="icon" type="image/png" href="{{ url_for('static', filename='bblogo.png') }}">
     <title>Forgot Password</title>
     <style>
         body {
@@ -72,7 +73,7 @@
         .submit-btn {
             width: 100%;
             padding: 12px;
-            background: #ea5555;
+            background: #0ea5e9;
             color: #fff;
             border: none;
             border-radius: 7px;
@@ -85,7 +86,7 @@
             margin-bottom: 7px;
         }
         .submit-btn:hover {
-            background: #d93a3a;
+            background: #0f4b6d;
         }
         .back-link {
             color: #ea5555;
@@ -116,7 +117,7 @@
             <button class="submit-btn" type="submit">Send Reset Link</button>
         </form>
         <div style="margin-top:16px;">
-            Back to <a href="{{ url_for('login.html') }}"class="back-link">Login</a>
+            Back to <a href="{{ url_for('login') }}"class="back-link">Login</a>
         </div>
     </div>
 </body>
