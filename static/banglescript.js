@@ -105,3 +105,45 @@ function addcart() {
   // Year
   document.getElementById("bb-year").textContent = new Date().getFullYear();
 
+ 
+  function openTerms() {
+    document.getElementById("termsModal").style.display = "block";
+  }
+  function closeTerms() {
+    document.getElementById("termsModal").style.display = "none";
+  }
+  function acceptTerms() {
+    document.getElementById("terms").disabled = false;
+    document.getElementById("terms").checked = true;
+    closeTerms();
+  }
+
+  // Optional: form validation safety
+  document.getElementById("signupForm").addEventListener("submit", function(e){
+    if (!document.getElementById("terms").checked) {
+      e.preventDefault();
+      alert("Please accept Terms & Conditions to continue.");
+    }
+  });
+
+
+  
+
+    // Search functionality
+
+    const searchInput = document.getElementById("searchInput");
+    const productList = document.getElementById("productList");
+    const products = productList.getElementsByClassName("product");
+
+    searchInput.addEventListener("keyup", function() {
+      const filter = searchInput.value.toLowerCase();
+
+      for (let i = 0; i < products.length; i++) {
+        let text = products[i].textContent || products[i].innerText;
+        if (text.toLowerCase().indexOf(filter) > -1) {
+          products[i].style.display = "";
+        } else {
+          products[i].style.display = "none";
+        }
+      }
+    });
