@@ -6,7 +6,6 @@
     <title>Signup Page</title>
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='bblogo.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="{{ url_for('static', filename='banglescript.js') }}"></script>
 
     <style>
         body {
@@ -256,11 +255,11 @@
                 <input type="password" id="confirm" placeholder="Repeat your password" required>
             </div>
             <div class="policy">
-                <input type="checkbox" id="terms" name="terms" disabled required>
+                <input type="checkbox" id="terms" name="terms" required>
                 I accept the <a href="javascript:void(0)" onclick="openTerms()">Terms &amp; Conditions</a>
             </div>
 
-            <button class="sign-up-btn" type="submit" onclick="signupUser()">Sign Up</button>
+            <button class="sign-up-btn" type="submit">Sign Up</button>
             <button class="google-btn" type="button">
 
                 <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" width="20"
