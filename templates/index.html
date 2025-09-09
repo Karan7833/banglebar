@@ -11,6 +11,7 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
 
   <style> 
     /* Default (mobile-first): images full width */
@@ -73,8 +74,29 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
           <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          
+          {% if user_logged_in %}
+          <!-- Logged in user menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              <i class="fa-solid fa-user"></i> {{ username.split()[0] if username else 'User' }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-circle"></i> Profile</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-box"></i> My Orders</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-heart"></i> Wishlist</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i class="fa-solid fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <!-- Guest user menu -->
           <li class="nav-item"><a class="nav-link" href="{{url_for('login')}}"><i
                 class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{url_for('signup')}}"><i
+                class="fa-solid fa-user-plus"></i> Signup</a></li>
+          {% endif %}
+          
           <li class="nav-item"><a class="nav-link" href="{{url_for('cart')}}"><i
                 class="fa fa-shopping-cart"></i> Cart</a></li>
           <li class="nav-item dropdown">
@@ -88,9 +110,14 @@
           <li class="nav-item"><a class="nav-link" href="{{ url_for('coustumer_care') }}"><i
                 class="fa-solid fa-headset"></i> Customer Care</a></li>
         </ul>
-        <form class="d-flex ms-lg-3 mt-2 mt-lg-0">
-          <input class="form-control me-2" type="search" placeholder="Search products...">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form class="d-flex ms-lg-3 mt-2 mt-lg-0" id="searchForm">
+          <input class="form-control me-2" id="searchInput" type="search" placeholder="Search products...">
+          <button class="btn btn-outline-success" type="submit">
+            <i class="fa-solid fa-search"></i>
+          </button>
+          <button class="btn btn-outline-secondary ms-1" type="button" id="clearSearch" style="display: none;">
+            <i class="fa-solid fa-times"></i>
+          </button>
         </form>
       </div>
     </div>
@@ -116,6 +143,17 @@
       <span class="carousel-control-next-icon"></span>
     </button>
   </div>
+
+  <!-- Personalized Welcome Message -->
+  {% if user_logged_in %}
+  <div class="container mt-4">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="fa-solid fa-heart me-2"></i>
+      <strong>Welcome back, {{ username.split()[0] if username else 'User' }}!</strong> Discover our latest collection of elegant bangles and jewelry.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  {% endif %}
 
   <!-- Features Section -->
   <section class="py-4 bg-light text-center">
@@ -149,105 +187,105 @@
 <section class="py-5">
   <div class="container">
     <h2 class="mb-4 text-center">✨ Shop Popular Products</h2>
-    <div class="row g-4">
+    <div class="row g-4" id="productList">
 
       <!-- Product Card -->
-      <div class="col-6 col-md-4 col-lg-3">
+      <div class="col-6 col-md-4 col-lg-3 product">
         <div class="card shadow-sm h-100">
           <div class="image-container">
             <img src="{{ url_for('static', filename='neckles1.png') }}" class="card-img-top" alt="Gold Bangles">
           </div>
           <div class="card-body text-center">
             <h6 class="card-title">Enamel Fold heart neckles</h6>
-            <p class="text-success fw-bold">1.₹1,999</p>
+            <p class="text-success fw-bold">₹1,999</p>
             <button class="btn btn-dark w-100">Add to Cart</button>
           </div>
         </div>
       </div>
 
       <!-- Example 2 -->
-      <div class="col-6 col-md-4 col-lg-3">
+      <div class="col-6 col-md-4 col-lg-3 product">
         <div class="card shadow-sm h-100">
           <div class="image-container">
             <img src="{{ url_for('static', filename='bangle3.png') }}" class="card-img-top" alt="Gold Bangles">
           </div>
           <div class="card-body text-center">
             <h6 class="card-title">Meenakari Bangles</h6>
-            <p class="text-success fw-bold">2.₹1,199</p>
+            <p class="text-success fw-bold">₹1,199</p>
             <button class="btn btn-dark w-100">Add to Cart</button>
           </div>
         </div>
       </div>
 
-         <div class="col-6 col-md-4 col-lg-3">
+         <div class="col-6 col-md-4 col-lg-3 product">
         <div class="card shadow-sm h-100">
           <div class="image-container">
             <img src="{{ url_for('static', filename='bangle4.png') }}" class="card-img-top" alt="Gold Bangles">
           </div>
           <div class="card-body text-center">
             <h6 class="card-title">Pearl Bangles</h6>
-            <p class="text-success fw-bold">3.₹799</p>
+            <p class="text-success fw-bold">₹799</p>
             <button class="btn btn-dark w-100">Add to Cart</button>
           </div>
         </div>
       </div>
 
-         <div class="col-6 col-md-4 col-lg-3">
+         <div class="col-6 col-md-4 col-lg-3 product">
         <div class="card shadow-sm h-100">
           <div class="image-container">
             <img src="{{ url_for('static', filename='bangle5.png') }}" class="card-img-top" alt="Gold Bangles">
           </div>
           <div class="card-body text-center">
             <h6 class="card-title">Antique Rajwadi Kada Set</h6>
-            <p class="text-success fw-bold">4.₹1,799</p>
+            <p class="text-success fw-bold">₹1,799</p>
             <button class="btn btn-dark w-100">Add to Cart</button>
           </div>
         </div>
       </div>
-         <div class="col-6 col-md-4 col-lg-3">
+         <div class="col-6 col-md-4 col-lg-3 product">
         <div class="card shadow-sm h-100">
           <div class="image-container">
             <img src="{{ url_for('static', filename='ring1.png') }}" class="card-img-top" alt="Gold Bangles">
           </div>
           <div class="card-body text-center">
             <h6 class="card-title">Eternal Love Diamond Ring</h6>
-            <p class="text-success fw-bold">5.₹</p>
+            <p class="text-success fw-bold">₹12,99</p>
             <button class="btn btn-dark w-100">Add to Cart</button>
           </div>
         </div>
       </div>
-         <div class="col-6 col-md-4 col-lg-3">
+         <div class="col-6 col-md-4 col-lg-3 product">
         <div class="card shadow-sm h-100">
           <div class="image-container">
             <img src="{{ url_for('static', filename='ring2.png') }}" class="card-img-top" alt="Gold Bangles">
           </div>
           <div class="card-body text-center">
             <h6 class="card-title">Royal Emerald Halo Ring</h6>
-            <p class="text-success fw-bold">6.₹2,299</p>
+            <p class="text-success fw-bold">₹1,299</p>
             <button class="btn btn-dark w-100">Add to Cart</button>
           </div>
         </div>
       </div>
-         <div class="col-6 col-md-4 col-lg-3">
+         <div class="col-6 col-md-4 col-lg-3 product">
         <div class="card shadow-sm h-100">
           <div class="image-container">
             <img src="{{ url_for('static', filename='ring3.png') }}" class="card-img-top" alt="Gold Bangles">
           </div>
           <div class="card-body text-center">
             <h6 class="card-title">Sapphire Crown Princess Ring</h6>
-            <p class="text-success fw-bold">7.₹2,299</p>
+            <p class="text-success fw-bold">₹1,599</p>
             <button class="btn btn-dark w-100">Add to Cart</button>
           </div>
         </div>
       </div>
-         <div class="col-6 col-md-4 col-lg-3">
+         <div class="col-6 col-md-4 col-lg-3 product">
         <div class="card shadow-sm h-100">
           <div class="image-container">
             <img src="{{ url_for('static', filename='ring5.png') }}" class="card-img-top" alt="Gold Bangles">
           </div>
           <div class="card-body text-center">
             <h6 class="card-title">Elegant Bangles</h6>
-            <p class="text-success fw-bold">8.₹2,299</p>
+            <p class="text-success fw-bold">₹1,999</p>
             <button class="btn btn-dark w-100">Add to Cart</button>
           </div>
         </div>
@@ -257,9 +295,101 @@
       <!-- Aur bhi cards isi format me -->
       
     </div>
+    
+    <!-- No Results Message -->
+    <div id="noResultsMessage" class="text-center py-5" style="display: none;">
+      <div class="alert alert-warning" role="alert">
+        <i class="fa-solid fa-search me-2"></i>
+        <strong>No products found!</strong><br>
+        <small>Try searching with different keywords or check back later for new arrivals.</small>
+      </div>
+    </div>
   </div>
 </section>
 
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">What Our Customers Say</h2>
+
+    <!-- Desktop View (Grid) -->
+    <div class="d-none d-md-block">
+      <div class="row g-4">
+        <!-- Review 1 -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm text-center p-3">
+            <img src="https://i.pravatar.cc/100?img=12" class="rounded-circle mx-auto mb-3" width="90" height="90">
+            <h6 class="fw-bold">Priya Sharma</h6>
+            <p class="text-warning mb-2">⭐⭐⭐⭐⭐</p>
+            <p class="text-muted">"Absolutely loved the bangles! The quality is amazing and packaging was very premium. Highly recommended."</p>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm text-center p-3">
+            <img src="https://i.pravatar.cc/100?img=18" class="rounded-circle mx-auto mb-3" width="90" height="90">
+            <h6 class="fw-bold">Rohit Verma</h6>
+            <p class="text-warning mb-2">⭐⭐⭐⭐</p>
+            <p class="text-muted">"Ordered a ring for my wife, delivery was on time and design is exactly as shown in pictures. Worth it!"</p>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm text-center p-3">
+            <img src="https://i.pravatar.cc/100?img=32" class="rounded-circle mx-auto mb-3" width="90" height="90">
+            <h6 class="fw-bold">Sneha Kapoor</h6>
+            <p class="text-warning mb-2">⭐⭐⭐⭐⭐</p>
+            <p class="text-muted">"The necklace set was stunning. Got so many compliments. Will surely shop again from Elegant Bangles."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <!-- Mobile View (Carousel with Auto Slide) -->
+<div id="reviewCarousel" class="carousel slide d-md-none" data-bs-ride="carousel" data-bs-interval="5000">
+  <div class="carousel-inner">
+
+    <!-- Review 1 -->
+    <div class="carousel-item active">
+      <div class="card shadow-sm text-center p-3">
+        <img src="https://i.pravatar.cc/100?img=12" class="rounded-circle mx-auto mb-3" width="90" height="90">
+        <h6 class="fw-bold">Priya Sharma</h6>
+        <p class="text-warning mb-2">⭐⭐⭐⭐⭐</p>
+        <p class="text-muted">"Absolutely loved the bangles! The quality is amazing and packaging was very premium. Highly recommended."</p>
+      </div>
+    </div>
+
+    <!-- Review 2 -->
+    <div class="carousel-item">
+      <div class="card shadow-sm text-center p-3">
+        <img src="https://i.pravatar.cc/100?img=18" class="rounded-circle mx-auto mb-3" width="90" height="90">
+        <h6 class="fw-bold">Rohit Verma</h6>
+        <p class="text-warning mb-2">⭐⭐⭐⭐</p>
+        <p class="text-muted">"Ordered a ring for my wife, delivery was on time and design is exactly as shown in pictures. Worth it!"</p>
+      </div>
+    </div>
+
+    <!-- Review 3 -->
+    <div class="carousel-item">
+      <div class="card shadow-sm text-center p-3">
+        <img src="https://i.pravatar.cc/100?img=32" class="rounded-circle mx-auto mb-3" width="90" height="90">
+        <h6 class="fw-bold">Sneha Kapoor</h6>
+        <p class="text-warning mb-2">⭐⭐⭐⭐⭐</p>
+        <p class="text-muted">"The necklace set was stunning. Got so many compliments. Will surely shop again from Elegant Bangles."</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Carousel Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
+  </button>
+</div>
 
   <!-- Video Section -->
   <div class="container mb-5">
@@ -290,7 +420,12 @@
             <li><a href="{{ url_for('coustumer_care') }}" class="text-light text-decoration-none">Customer Care</a></li>
             <li><a href="#" class="text-light text-decoration-none">Shipping & Returns</a></li>
             <li><a href="#" class="text-light text-decoration-none">Warranty</a></li>
+            {% if user_logged_in %}
+            <li><a href="{{ url_for('logout') }}" class="text-light text-decoration-none">Logout</a></li>
+            {% else %}
             <li><a href="{{ url_for('login') }}" class="text-light text-decoration-none">Login</a></li>
+            <li><a href="{{ url_for('signup') }}" class="text-light text-decoration-none">Signup</a></li>
+            {% endif %}
           </ul>
         </div>
         <div class="col-md-3">
@@ -312,9 +447,11 @@
       </div>
     </div>
   </footer>
+  <br><br><br><br>
 
   <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="{{ url_for('static', filename='banglescript.js') }}"></script>
   <script>
     document.getElementById("year").innerText = new Date().getFullYear();
   </script>
