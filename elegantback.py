@@ -51,7 +51,10 @@ def is_valid_email(email):
 # -------------------
 @app.route('/')
 def home():
-    return render_template('index.html' , products=products)
+    # Check if user is logged in
+    user_logged_in = 'user_id' in session
+    username = session.get('username', '')
+    return render_template('index.html', products=products, user_logged_in=user_logged_in, username=username)
 
 # @app.route('/add_to_cart', methods=['POST'])
 # def add_to_cart():
@@ -100,7 +103,7 @@ def coustumer_care():
 
 @app.route('/coustmure_care')
 def index_home():
-    return render_template('/index.html')
+    return render_template('index.html')
 
 @app.route('/cart')
 def cart():
@@ -153,7 +156,11 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
 
-        return jsonify({'success': True, 'message': 'Signup successful'}), 201
+        # Automatically log in the user after successful signup
+        session['user_id'] = new_user.id
+        session['username'] = new_user.username
+
+        return jsonify({'success': True, 'message': 'Signup successful', 'redirect': '/'}), 201
 
 
 
@@ -164,42 +171,47 @@ def login():
     if request.method == 'GET':
         return render_template('login.html')
 
-     # POST request handle karo
+    # POST request handle karo
 
     if request.method == 'POST':
-        data= request.get_json()
-        email = request.get['email']
-        password = request.get['password']
+        data = request.get_json()
+        if not data:
+            return jsonify({'success': False, 'message': 'Request must be JSON'}), 400
+            
+        email = data.get('email', '').strip()
+        password = data.get('password', '')
     
-    if email and password :
-        user = User.query.filter_by(email=email).first()
-        if not user or not check_password_hash(user.password, password): # (⚠️ real app me password hashing use karo)
-            session['user_id'] = user.id
-            session['username'] = user.username
-            return redirect(url_for('login'))
+        if email and password:
+            user = User.query.filter_by(email=email).first()
+            if user and check_password_hash(user.password_hash, password):
+                session['user_id'] = user.id
+                session['username'] = user.username
+                return jsonify({'success': True, 'message': 'Login successful', 'redirect': '/'}), 200
+            else:
+                return jsonify({'success': False, 'message': 'Invalid email or password'}), 401
         else:
-            return "Invalid email or password"
+            return jsonify({'success': False, 'message': 'Email and password are required'}), 400
+    
     return render_template('login.html')
-
-
-# ---------- Index ----------
-@app.route('/')
-def index():
-    if 'user_id' in session:
-        return f"Welcome {session['username']}! This is your home page."
-    else:
-        return "Welcome Guest! Please <a href='/login'>login</a> or <a href='/signup'>signup</a>."
 
 
 # ---------- Logout ----------
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('home'))
 
-@app.route('/')
-def render():
+@app.route('/product_showcase')
+def product_showcase():
     return render_template("product_showcase.html", products=products)
+
+
+
+
+
+
+
+    
 # -------------------
 # Initialize DB
 # -------------------
@@ -207,7 +219,4 @@ with app.app_context():
     db.create_all()
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
-
+    app.run( host='0.0.0.0', debug=True, port=5000)
